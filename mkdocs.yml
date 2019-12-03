@@ -1,0 +1,26 @@
+site_name: Interview
+site_author: 'Vinay Krishna'
+site_url: 'https://vinkrish.github.io/interview-reference/'
+theme:
+  name: 'material'
+  
+# Repository
+repo_name: 'vinkrish/interview-reference'
+repo_url: 'https://github.com/vinkrish/interview-reference'
+
+extra_javascript:
+  # Add MathJax support
+  - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML'
+
+markdown_extensions:
+  - mdx_math
+
+# Navigation
+nav:
+  - About: index.md
+  - Angular: angular.md
+  - Java: java.md
+  - JavaScript: javascript.md
+  - ReactJS: reactJS.md
+  - Python: python.md
+  - NodeJS: nodeJS.md
