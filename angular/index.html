@@ -98,6 +98,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#architecture-overview" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -247,9 +251,71 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Angular
+      </label>
+    
     <a href="./" title="Angular" class="md-nav__link md-nav__link--active">
       Angular
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" title="Architecture overview" class="md-nav__link">
+    Architecture overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-binding" title="Data Binding" class="md-nav__link">
+    Data Binding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directives" title="Directives" class="md-nav__link">
+    Directives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routing" title="Routing" class="md-nav__link">
+    Routing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forms" title="Forms" class="md-nav__link">
+    Forms
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules" title="Modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -321,6 +387,70 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#architecture-overview" title="Architecture overview" class="md-nav__link">
+    Architecture overview
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#data-binding" title="Data Binding" class="md-nav__link">
+    Data Binding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#directives" title="Directives" class="md-nav__link">
+    Directives
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#routing" title="Routing" class="md-nav__link">
+    Routing
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#forms" title="Forms" class="md-nav__link">
+    Forms
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#modules" title="Modules" class="md-nav__link">
+    Modules
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -331,7 +461,56 @@
                 
                   <h1>Angular</h1>
                 
-                
+                <ul>
+<li>Angular is a framework for building client applications in HTML.</li>
+<li>The framework consists of several libraries.</li>
+<li>The angular application is written by composing HTML templates with angularized markup, writing component classes to manage those templates, adding applications logic in services, and boxing components &amp; services in modules.</li>
+<li>Angular apps are modular and Angular has its own modularity system called NgModules eg: AppModule: which is the root module, @NgModule decorator.</li>
+<li>Decorators are functions that modify Javascript classes.</li>
+<li>Angular has many decorators that attach metadata to classes.</li>
+</ul>
+<h2 id="architecture-overview">Architecture overview</h2>
+<ul>
+<li>Angular ships with a collection of js modules eg:import Angular's component decorator from the @angular/core library.</li>
+<li>Component: A component controls a patch of screen called a view. You define a components application logic; what it does to support the view inside a class. The class interacts with the view through an API of properties and methods.</li>
+<li>Templates: You define a components view with its companion template, A template is a form of HTML that tells Angualr how to render the component.</li>
+<li>Metadata tells Angular how to process a class. In Typescript, you attach metadata by using a decorator.</li>
+<li>Service is a class that performs a specific task eg: fetching data from backend or logging service.</li>
+<li>Angular uses dependency injection to provide new components with the services they need, such as the router service that lets you define navigation among views.</li>
+</ul>
+<h2 id="data-binding">Data Binding</h2>
+<p>A mechanism for coordinating parts of a template with parts of a component.</p>
+<p>Binding markup connects your application data and the DOM. There are two types of data binding:</p>
+<ul>
+<li>Event binding lets your app respond to user input in the target environment by updating your application data.</li>
+<li>Property binding lets you interpolate values that are computed from your application data into the HTML.</li>
+</ul>
+<p>Add binding markup to the template HTML to tell Angular how to connect both sides.
+eg: <code>&lt;app-hero-detail [hero]="selectedHero"&gt; &lt;/app-hero-detail&gt;</code></p>
+<p>The [hero] property binding passsess the value of selectedHero from the parent Herolist component to the hero property of the child HeroDetailComponent.</p>
+<h2 id="directives">Directives</h2>
+<p>Angular templates are dynamic, when Angular renders them, it transforms the DOM according to the instructions given by directives.</p>
+<p>A component is a directive-with-a-template.</p>
+<ul>
+<li>Structural directive alter layout by adding, removing and replacing elements of DOM. eg: <code>*ngFor, *ngIf</code></li>
+<li>Attribute directive alter the appearance or behavior of an existing element. eg: <code>[(ngModel)]</code></li>
+<li>custom directive eg: <code>HeroListComponent</code></li>
+</ul>
+<h2 id="routing">Routing</h2>
+<p>The Angular router enables navigation from one view to the next as userss perfrom application tasks.</p>
+<h2 id="forms">Forms</h2>
+<ul>
+<li>Template-Driven: Angular infers the form object from the DOM</li>
+<li>Reactive: Form is created programmatically &amp; synchronized withe the DOM</li>
+</ul>
+<h2 id="modules">Modules</h2>
+<p>NgModule is a decorator function that takes a single metadata object whose properties describe the module.</p>
+<ul>
+<li>declarations: the view classes that belong to this module. Angular has three kinds of view classes - components, directives and pipes</li>
+<li>exports: the subset of declarations that should be visible &amp; usable in the component templates of other modules</li>
+<li>imports: other modules whose exported classes are needed by component templates declared in this module</li>
+<li>providers: creators of service that this module contributes to the global collection of services; they become accessible in all parts of the app</li>
+</ul>
                 
                   
                 
