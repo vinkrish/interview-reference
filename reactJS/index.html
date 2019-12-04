@@ -311,8 +311,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#react-redux" title="React-Redux" class="md-nav__link">
-    React-Redux
+  <a href="#how-react-works" title="How React Works" class="md-nav__link">
+    How React Works
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redux" title="Redux" class="md-nav__link">
+    Redux
   </a>
   
 </li>
@@ -378,8 +385,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#react-redux" title="React-Redux" class="md-nav__link">
-    React-Redux
+  <a href="#how-react-works" title="How React Works" class="md-nav__link">
+    How React Works
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#redux" title="Redux" class="md-nav__link">
+    Redux
   </a>
   
 </li>
@@ -414,9 +428,36 @@
 <li>React-Redux: Woah, thanks for the new data Mr.Store. I'll now intelligently determine if I should tell React about this change so that it only has to bother with updating the UI when necessary.</li>
 <li>React: Ooh! shiny new data has been passed down via props from the store! I'll update the UI to reflect this.</li>
 </ul>
-<h2 id="react-redux">React-Redux</h2>
+<h2 id="how-react-works">How React Works</h2>
+<ul>
+<li>For a component to access a state of it's parent component, the parent needs to pass the state into the child component as a property.</li>
+<li>A component can only access it's own functions, props and states.</li>
+<li>Pass reference of function to another component as property, another component can use that reference with <code>this.props.reference_name</code>.</li>
+<li>In function component we can directly use <code>props.property_name</code>.</li>
+<li>Property value can be sent to component (without having any reference in component it is being used).</li>
+<li>You can pass value to reference function.</li>
+<li>Avoid function wrapper method or bind method as it creates new button for evvery render.]</li>
+<li>Use function component if it isn't top level or it's state need to be managed &amp; no personalized event handler.</li>
+</ul>
+<p><code>Model + Component = DOM</code></p>
+<p>For any state change, React will regenerate the entire document object model, to avoid this problem React updates virtual DOM; which is fast.</p>
+<p>Four ways to create component:</p>
+<ul>
+<li>ES5 createClass</li>
+<li>Es6 class</li>
+<li>ES5 stateless function</li>
+<li>ES6 stateless function</li>
+</ul>
+<p>All properties of object is available as props in compnent.</p>
+<h2 id="redux">Redux</h2>
+<p>Redux enforces keeping all state in a single centralized object graph.</p>
+<p>Reducers are functions that take the current state in an action and then return a new state.</p>
+<p>Containers are components containing the necessary logic for marshalling data and actions (via props)</p>
+<p>Redux store is immutable.</p>
+<p><img alt="react_redux_store" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/react_redux_store.png" /></p>
 <p>The provider component attaches your application to the redux store so you use the provider component to wrap your application's top-level component.</p>
 <p>The connect wraps our component so it's connected to the redux store.</p>
+<p>children is passes down from react router <code>{ this.props.children }</code></p>
                 
                   
                 

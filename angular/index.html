@@ -98,7 +98,7 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
-      <a href="#architecture-overview" tabindex="1" class="md-skip">
+      <a href="#angular" tabindex="1" class="md-skip">
         Skip to content
       </a>
     
@@ -250,6 +250,8 @@
     
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
+      
+    
     
       <label class="md-nav__link md-nav__link--active" for="__toc">
         Angular
@@ -263,9 +265,38 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" title="Modules" class="md-nav__link">
+    Modules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ngmodule-metadata" title="NgModule metadata" class="md-nav__link">
+    NgModule metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ngmodules-and-components" title="NgModules and components" class="md-nav__link">
+    NgModules and components
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#architecture-overview" title="Architecture overview" class="md-nav__link">
@@ -277,6 +308,13 @@
         <li class="md-nav__item">
   <a href="#data-binding" title="Data Binding" class="md-nav__link">
     Data Binding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipes" title="Pipes" class="md-nav__link">
+    Pipes
   </a>
   
 </li>
@@ -298,13 +336,6 @@
         <li class="md-nav__item">
   <a href="#forms" title="Forms" class="md-nav__link">
     Forms
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#modules" title="Modules" class="md-nav__link">
-    Modules
   </a>
   
 </li>
@@ -394,9 +425,38 @@
 <nav class="md-nav md-nav--secondary">
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">Table of contents</label>
     <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#modules" title="Modules" class="md-nav__link">
+    Modules
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ngmodule-metadata" title="NgModule metadata" class="md-nav__link">
+    NgModule metadata
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ngmodules-and-components" title="NgModules and components" class="md-nav__link">
+    NgModules and components
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#architecture-overview" title="Architecture overview" class="md-nav__link">
@@ -408,6 +468,13 @@
         <li class="md-nav__item">
   <a href="#data-binding" title="Data Binding" class="md-nav__link">
     Data Binding
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipes" title="Pipes" class="md-nav__link">
+    Pipes
   </a>
   
 </li>
@@ -433,13 +500,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#modules" title="Modules" class="md-nav__link">
-    Modules
-  </a>
-  
-</li>
-      
       
       
       
@@ -459,9 +519,8 @@
                   <a href="https://github.com/vinkrish/interview-reference/edit/master/docs/angular.md" title="Edit this page" class="md-icon md-content__icon">&#xE3C9;</a>
                 
                 
-                  <h1>Angular</h1>
-                
-                <ul>
+                <h1 id="angular">Angular</h1>
+<ul>
 <li>Angular is a framework for building client applications in HTML.</li>
 <li>The framework consists of several libraries.</li>
 <li>The angular application is written by composing HTML templates with angularized markup, writing component classes to manage those templates, adding applications logic in services, and boxing components &amp; services in modules.</li>
@@ -469,25 +528,55 @@
 <li>Decorators are functions that modify Javascript classes.</li>
 <li>Angular has many decorators that attach metadata to classes.</li>
 </ul>
+<p><img alt="angular_overview" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/angular_overview.png" /></p>
+<h2 id="modules">Modules</h2>
+<p>NgModules are containers for a cohesive block of code dedicated to an application domain, a workflow, or a closely related set of capabilities. They can contain components, service providers, and other code files whose scope is defined by the containing NgModule. They can import functionality that is exported from other NgModules, and export selected functionality for use by other NgModules.</p>
+<h3 id="ngmodule-metadata">NgModule metadata</h3>
+<p>NgModule is a decorator function that takes a single metadata object whose properties describe the module, such as</p>
+<ul>
+<li>declarations: the view classes that belong to this module. Angular has three kinds of view classes - components, directives and pipes.</li>
+<li>exports: the subset of declarations that should be visible &amp; usable in the component templates of other modules.</li>
+<li>imports: other modules whose exported classes are needed by component templates declared in this module.</li>
+<li>providers: creators of service that this module contributes to the global collection of services; they become accessible in all parts of the app.</li>
+<li>bootstrap: The main application view, called the root component, which hosts all other app views. Only the root NgModule should set the bootstrap property.</li>
+</ul>
+<h3 id="ngmodules-and-components">NgModules and components</h3>
+<p>NgModules provide a compilation context for their components. A root NgModule always has a root component that is created during bootstrap, but any NgModule can include any number of additional components, which can be loaded through the router or created through the template. The components that belong to an NgModule share a compilation context.</p>
+<p><img alt="compilation-context" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/compilation-context.png" /></p>
+<p>A component and its template together define a view. A component can contain a view hierarchy, which allows you to define arbitrarily complex areas of the screen that can be created, modified, and destroyed as a unit. A view hierarchy can mix views defined in components that belong to different NgModules. This is often the case, especially for UI libraries.</p>
+<p><img alt="view-hierarchy" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/view-hierarchy.png" /></p>
+<p>When you create a component, it's associated directly with a single view, called the host view. The host view can be the root of a view hierarchy, which can contain embedded views, which are in turn the host views of other components. Those components can be in the same NgModule, or can be imported from other NgModules. Views in the tree can be nested to any depth.</p>
 <h2 id="architecture-overview">Architecture overview</h2>
 <ul>
-<li>Angular ships with a collection of js modules eg:import Angular's component decorator from the @angular/core library.</li>
+<li>Angular ships with a collection of js modules, you can think of them as library modules. eg:import Angular's Component decorator from the @angular/core library using <code>import { Component } from '@angular/core';</code>.</li>
 <li>Component: A component controls a patch of screen called a view. You define a components application logic; what it does to support the view inside a class. The class interacts with the view through an API of properties and methods.</li>
 <li>Templates: You define a components view with its companion template, A template is a form of HTML that tells Angualr how to render the component.</li>
 <li>Metadata tells Angular how to process a class. In Typescript, you attach metadata by using a decorator.</li>
 <li>Service is a class that performs a specific task eg: fetching data from backend or logging service.</li>
 <li>Angular uses dependency injection to provide new components with the services they need, such as the router service that lets you define navigation among views.</li>
 </ul>
+<p><img alt="library-module" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/library-module.png" /></p>
 <h2 id="data-binding">Data Binding</h2>
 <p>A mechanism for coordinating parts of a template with parts of a component.</p>
-<p>Binding markup connects your application data and the DOM. There are two types of data binding:</p>
+<p>The following diagram shows the four forms of data binding markup. Each form has a direction: to the DOM, from the DOM, or both.</p>
+<p><img alt="databinding" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/databinding.png" /></p>
+<p>Data binding between a template and its component:</p>
+<p><img alt="component-databinding" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/component-databinding.png" /></p>
+<p>Data binding between parent and child coponents:</p>
+<p><img alt="parent-child-binding" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/parent-child-binding.png" /></p>
+<pre><code class="html">&lt;li&gt;{{hero.name}}&lt;/li&gt;
+&lt;app-hero-detail [hero]=&quot;selectedHero&quot;&gt;&lt;/app-hero-detail&gt;
+&lt;li (click)=&quot;selectHero(hero)&quot;&gt;&lt;/li&gt;
+</code></pre>
+
 <ul>
-<li>Event binding lets your app respond to user input in the target environment by updating your application data.</li>
-<li>Property binding lets you interpolate values that are computed from your application data into the HTML.</li>
+<li>The {{hero.name}} interpolation displays the component's hero.name property value.</li>
+<li>The [hero] property binding passes the value of selectedHero from the parent HeroListComponent to the hero property of the child HeroDetailComponent.</li>
+<li>The (click) event binding calls the component's selectHero method when the user clicks a hero's name.</li>
 </ul>
-<p>Add binding markup to the template HTML to tell Angular how to connect both sides.
-eg: <code>&lt;app-hero-detail [hero]="selectedHero"&gt; &lt;/app-hero-detail&gt;</code></p>
-<p>The [hero] property binding passsess the value of selectedHero from the parent Herolist component to the hero property of the child HeroDetailComponent.</p>
+<h2 id="pipes">Pipes</h2>
+<p>Angular pipes let you declare display-value transformations in your template HTML. A class with the @Pipe decorator defines a function that transforms input values to output values for display in a view.
+eg: <code>{{interpolated_value | pipe_name}}...&lt;p&gt;Today is {{today | date}}&lt;/p&gt;</code></p>
 <h2 id="directives">Directives</h2>
 <p>Angular templates are dynamic, when Angular renders them, it transforms the DOM according to the instructions given by directives.</p>
 <p>A component is a directive-with-a-template.</p>
@@ -497,19 +586,11 @@ eg: <code>&lt;app-hero-detail [hero]="selectedHero"&gt; &lt;/app-hero-detail&gt;
 <li>custom directive eg: <code>HeroListComponent</code></li>
 </ul>
 <h2 id="routing">Routing</h2>
-<p>The Angular router enables navigation from one view to the next as userss perfrom application tasks.</p>
+<p>The Angular router enables navigation from one view to the next as users perfrom application tasks.</p>
 <h2 id="forms">Forms</h2>
 <ul>
 <li>Template-Driven: Angular infers the form object from the DOM</li>
 <li>Reactive: Form is created programmatically &amp; synchronized withe the DOM</li>
-</ul>
-<h2 id="modules">Modules</h2>
-<p>NgModule is a decorator function that takes a single metadata object whose properties describe the module.</p>
-<ul>
-<li>declarations: the view classes that belong to this module. Angular has three kinds of view classes - components, directives and pipes</li>
-<li>exports: the subset of declarations that should be visible &amp; usable in the component templates of other modules</li>
-<li>imports: other modules whose exported classes are needed by component templates declared in this module</li>
-<li>providers: creators of service that this module contributes to the global collection of services; they become accessible in all parts of the app</li>
 </ul>
                 
                   
