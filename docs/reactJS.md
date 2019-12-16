@@ -25,7 +25,7 @@ For any state change, React will regenerate the entire document object model, to
 Four ways to create component:
 
 - ES5 createClass
-- Es6 class
+- ES6 class
 - ES5 stateless function
 - ES6 stateless function
 

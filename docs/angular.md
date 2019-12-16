@@ -4,7 +4,7 @@
 - The framework consists of several libraries.
 - The angular application is written by composing HTML templates with angularized markup, writing component classes to manage those templates, adding applications logic in services, and boxing components & services in modules.
 - Angular apps are modular and Angular has its own modularity system called NgModules eg: AppModule: which is the root module, @NgModule decorator.
-- Decorators are functions that modify Javascript classes.
+- Decorators are functions that modify Javascript classes. eg: @Input, @Output
 - Angular has many decorators that attach metadata to classes.
 
 ![angular_overview](https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/angular_overview.png)
@@ -34,6 +34,12 @@ A component and its template together define a view. A component can contain a v
 ![view-hierarchy](https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/view-hierarchy.png)
 
 When you create a component, it's associated directly with a single view, called the host view. The host view can be the root of a view hierarchy, which can contain embedded views, which are in turn the host views of other components. Those components can be in the same NgModule, or can be imported from other NgModules. Views in the tree can be nested to any depth.
+
+Views are typically arranged hierarchically, allowing you to modify or show and hide entire UI sections or pages as a unit. The template immediately associated with a component defines that component's host view. The component can also define a view hierarchy, which contains embedded views, hosted by other components.
+
+![component-tree](https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/component-tree.png)
+
+A view hierarchy can include views from components in the same NgModule.
 
 ## Architecture overview
 
