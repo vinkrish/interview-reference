@@ -441,39 +441,15 @@
 </ul>
 <p>3 states of object (instance):</p>
 <ul>
-<li>
-<ol>
 <li><strong>Transient</strong>: Th object is in transient state if it is just created but has no primary key (identifier) and not associated with session.</li>
-</ol>
-</li>
-<li>
-<ol>
 <li><strong>Peristent</strong>: The object is in persistent state if session is open, and you just saved the instance in the database or retreived the instance from the database.</li>
-</ol>
-</li>
-<li>
-<ol>
 <li><strong>Detached</strong>: The object is in detached state if session is closed. After detached state, object comes to persistent state if you call lock() or update() method.</li>
-</ol>
-</li>
 </ul>
 <p>3 ways of inheritance mapping:</p>
 <ul>
-<li>
-<ol>
 <li>Table Per Hierarchy</li>
-</ol>
-</li>
-<li>
-<ol>
 <li>Table Per Concrete Class</li>
-</ol>
-</li>
-<li>
-<ol>
 <li>Table Per Subclass</li>
-</ol>
-</li>
 </ul>
 <p>This will allow us to map ther inheritance hierarchy classes with the table of the database.</p>
 <p>In table per hierarchy mapping, single table is required to map the whole hierarchy, an extra column is added to identify the class (known as discriminator column).</p>
