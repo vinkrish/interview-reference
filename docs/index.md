@@ -1,5 +1,3 @@
-This is a personal copy of my preparation for interviews
-
 # Data Structure
 
 Is is a particular way of organising data in a computer so that it can be used effectively.
