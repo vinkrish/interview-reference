@@ -98,6 +98,10 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
     
+      <a href="#groupid" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
     
       <header class="md-header" data-md-component="header">
   <nav class="md-header-nav md-grid">
@@ -259,9 +263,50 @@
     <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
     
     
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        Java
+      </label>
+    
     <a href="./" title="Java" class="md-nav__link md-nav__link--active">
       Java
     </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#groupid" title="groupId" class="md-nav__link">
+    groupId
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#artifactid" title="artifactId" class="md-nav__link">
+    artifactId
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hibernate" title="Hibernate" class="md-nav__link">
+    Hibernate
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
     
   </li>
 
@@ -296,18 +341,6 @@
 
 
   <li class="md-nav__item">
-    <a href="../python/" title="Python" class="md-nav__link">
-      Python
-    </a>
-  </li>
-
-    
-      
-      
-      
-
-
-  <li class="md-nav__item">
     <a href="../nodeJS/" title="NodeJS" class="md-nav__link">
       NodeJS
     </a>
@@ -321,6 +354,49 @@
               </div>
             
             
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#groupid" title="groupId" class="md-nav__link">
+    groupId
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#artifactid" title="artifactId" class="md-nav__link">
+    artifactId
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hibernate" title="Hibernate" class="md-nav__link">
+    Hibernate
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content">
             <article class="md-content__inner md-typeset">
@@ -331,7 +407,78 @@
                 
                   <h1>Java</h1>
                 
-                
+                <h3 id="groupid">groupId</h3>
+<p>It identify your project uniquely across all projects, It has to follow the package name rules.</p>
+<p>eg: org.apache.maven</p>
+<p>A good way to determine the granularity of the groupId is to use the project structure. That is, if the current project is a multiple module project, it should append a new identifier to the parent's groupId.</p>
+<p>eg: org.apache.maven.plugins</p>
+<h3 id="artifactid">artifactId</h3>
+<p>It is the name of the jar without version.</p>
+<p>eg: maven</p>
+<h2 id="hibernate">Hibernate</h2>
+<p>Hibernate is an open-source and lightweight ORM tool that is used to store, manipulate and retrieve data from the database.</p>
+<p>ORM -&gt; Object Relational Mapping</p>
+<p>Its is a programming strategy to map object with the data stored in the database.</p>
+<p>Hibernate architecture comprises of many interfaces such as:</p>
+<ul>
+<li>Configuration</li>
+<li>SessionFactory</li>
+<li>Session</li>
+<li>Transaction...etc (Query, Criteria)</li>
+</ul>
+<p><img alt="hibernate_architecture" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/hibernate_architecture.jpg" /></p>
+<p>SessionFactory provides the instance of Session:</p>
+<ul>
+<li>It is a factory of Session</li>
+<li>It holds the data of second level cache that is not enabled by default</li>
+<li>It is a thread safe object</li>
+</ul>
+<p>Session maintains a connection beetween hibernate application and database:</p>
+<ul>
+<li>It provides methods to store, update, delete or fetch data from the database such as persist(), update(), delete(), load(), get() etc</li>
+<li>It is a factory of Query, Criteria and Transaction. It provides factory methods to return these instances</li>
+<li>It is not thread safe</li>
+</ul>
+<p>3 states of object (instance):</p>
+<ul>
+<li>
+<ol>
+<li><strong>Transient</strong>: Th object is in transient state if it is just created but has no primary key (identifier) and not associated with session.</li>
+</ol>
+</li>
+<li>
+<ol>
+<li><strong>Peristent</strong>: The object is in persistent state if session is open, and you just saved the instance in the database or retreived the instance from the database.</li>
+</ol>
+</li>
+<li>
+<ol>
+<li><strong>Detached</strong>: The object is in detached state if session is closed. After detached state, object comes to persistent state if you call lock() or update() method.</li>
+</ol>
+</li>
+</ul>
+<p>3 ways of inheritance mapping:</p>
+<ul>
+<li>
+<ol>
+<li>Table Per Hierarchy</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Table Per Concrete Class</li>
+</ol>
+</li>
+<li>
+<ol>
+<li>Table Per Subclass</li>
+</ol>
+</li>
+</ul>
+<p>This will allow us to map ther inheritance hierarchy classes with the table of the database.</p>
+<p>In table per hierarchy mapping, single table is required to map the whole hierarchy, an extra column is added to identify the class (known as discriminator column).</p>
+<p>In case of table per concrete class, tables are created as per class. But duplicate column is added in subclass tables.</p>
+<p>In table per subclass, tables are created as per class but related by foreign key. So there are no duplicate columns.</p>
                 
                   
                 
