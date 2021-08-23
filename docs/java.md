@@ -1,5 +1,7 @@
 # Java
 
+[Refer here for examples](https://github.com/vinkrish/DataStructure-Algorithm-Snippets_Java)
+
 Java is a general-purpose programming language that is class-based, object-oriented, and designed to have as few implementation dependencies as possible.
  
 **Class** : A template that describes the kinds of state and behavior that objects of its type support.
