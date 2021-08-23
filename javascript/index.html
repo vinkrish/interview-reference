@@ -64,6 +64,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#js-playground" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -251,6 +256,8 @@
       <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
       
       
+        
+      
       
       <a href="./" class="md-nav__link md-nav__link--active">
         JavaScript
@@ -297,6 +304,23 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
@@ -307,9 +331,186 @@
                   </a>
                 
                 
-                  <h1>JavaScript</h1>
-                
-                
+                <h1 id="js-playground">JS Playground</h1>
+<p><a href="https://github.com/vinkrish/sandbox/tree/master/JavaScript">Refer here for detailed examples</a></p>
+<pre><code class="language-js">
+const name = &quot;Vinay&quot;;
+
+console.log(`Hello ${name}!`);
+
+var x = 'global';
+let y = 'global';
+console.log(this.x); // &quot;global&quot;
+console.log(this.y); // undefined
+
+function varTest() {
+   var x = 1;
+   {
+     var x = 2;  // same variable!
+     console.log(x);  // 2
+   }
+   console.log(x);  // 2   
+}
+varTest();
+
+function letTest() {
+   let x = 1;
+   {
+     let x = 2;  // different variable
+     console.log(x);  // 2
+   }
+   console.log(x);  // 1
+}
+letTest();
+
+function sayHello(name) {
+   let closureText = &quot;hmm&quot;;
+
+   return {
+       yourName: name,
+       introduce() {
+           console.log(`Hello ${name}, my name in Vinay!`);
+           console.log(`Closure says... ${closureText}!`);
+       }
+   }
+}
+
+let sh = sayHello('Angel');
+sh.introduce();
+
+function outer(param) {
+    let x = param
+    let inner = function() {
+        console.log(x)
+    }
+    return inner;
+}
+
+let func = outer(9)
+func()
+
+let vinay = {
+   job: 'SDE',
+   speak() {
+       console.log(&quot;Hell with Hello World!&quot;);
+   },
+   wave: function() {
+       console.log(&quot;just wave the hand&quot;);
+   }
+}
+
+vinay.speak();
+
+let obj1 = { name: 'Vinay' };
+let obj2 = { sex: 'Male', Age: 30 };
+
+for (const [key, value] of Object.entries(obj2)) {
+    console.log(`${key}: ${value}`);
+}
+
+let clonedObj = {...obj2};
+let mergedObj = {...obj1, ...obj2};
+
+//  spread syntax below does not work as one might expect: it spreads an array of arguments into the object literal, due to the rest parameter
+const merge = (...objects) =&gt; (
+   {...objects}
+)
+
+const mergeFn = (...objects) =&gt; {
+   return {...objects};
+}
+
+console.log('Cloned Object:');
+console.log(clonedObj);
+
+console.log('Merged Object:');
+console.log(mergedObj);
+
+let copiedObj = obj2;
+obj2.sex = 'NA';
+
+console.log('Copied Object sex changed:');
+console.log(copiedObj);
+
+console.log('Cloned Object sex does not change:');
+console.log(clonedObj);
+
+console.log(merge(obj1, obj2));
+
+console.log(mergeFn(obj1, obj2));
+
+let log = (name, ...details) =&gt; {
+   console.log(`Welcome ${name}`);
+   console.log(details);
+   details.forEach(detail =&gt; {
+       console.log(detail);
+   });
+   for (const detail of details) {
+       console.log(detail);
+   }
+}
+
+let arr = [{sex: 'Male'}, {Age: 30}];
+let details = [{married: 'No'} , ...arr];
+
+log(&quot;Vinay&quot;, ...details);
+log(&quot;Vinay&quot;, details);
+
+console.log(&quot;Spread:&quot;);
+// spread(obj1, ...obj2);
+// object themselves are not iterable, but they become iterable when used in array or with iterating functions such as map(), reduce() and assign().
+log(obj1, obj2);
+
+function GreetingService(name) {
+   this.name = name;
+   this.sayHi = function() {
+           console.log(`Hello ${this.name}!`);
+       };
+   this.sayHiAsync = function() {
+       setTimeout(function(){
+           console.log(`Hello ${this.name}!`);
+       },2000);
+   }
+   this.sayBye = function() {
+           console.log(`Goodbye ${this.name}!`);
+       }
+}
+
+let greeting = new GreetingService('Angel');
+console.log(greeting);
+console.log(greeting.name);
+greeting.sayHi();
+
+let { sayHi:hi } = new GreetingService('May Dupee');
+hi();
+
+greets = (name) =&gt; {
+   let tempName = name;
+   sayHi = () =&gt; {
+       console.log(`Hello ${name}!`);
+   }
+   sayBye = () =&gt; {
+       console.log(`Bye ${name}`);
+   }
+   return {newName: tempName, sayHi, sayBye};
+}
+let greet = greets(&quot;Ango&quot;);
+console.log(greet);
+greet.sayHi();
+
+let { newName, sayBye:bye } = greets(&quot;Dupee&quot;);
+console.log(newName);
+bye();
+
+let arr = [1,2,3]
+square = (x) =&gt; {
+    return x*x
+}
+let squared = arr.map(square)
+let squared = arr.map(x =&gt; square(x))
+console.log(squared)
+
+</code></pre>
                 
               
               
