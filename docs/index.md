@@ -69,14 +69,28 @@ A Binary Tree can be traversed in two ways:
 1. Depth First Traversal
 2. Breadth First Traversal
 
-Properties:
+Properties: where h \( \to \) height of the tree
 
-- The maximum number of nodes at level
-$$l = 2^(l-1)$$
-- Maximum number of nodes, where h $\to$ height of the tree
-$$2^h-1$$
+- Total Number of leaf nodes in a Binary Tree = Total Number of nodes with 2 children + 1
+- A binary tree of \(n\) nodes has \((n+1)\) null references.
+- Minimum number of nodes: \(n = h+1\)
+- Maximum number of nodes at any level ‘l’ in a binary tree: \(n = 2^l\)
+- In a Full Binary Tree, maximum number of nodes: \(n = 2^{h+1}-1\) and minimum number of nodes: \(n = 2h+1\)
 
-eg: They are useful in File Structures where each file is located in a particular directory and there is a specific hierarchy associated with file and directories.
+#### Types of Binary Tree
+
+- **Full Binary Tree**: A binary tree is said to be a full binary tree when each internal node has zero or two children
+- **Perfect Binary Tree**: A perfect binary tree is a special type of binary tree in which all the leaf nodes are at the same level, and each internal node has two children
+- **Complete Binary Tree**: A binary tree is referred to as a complete binary tree when all of its levels are completely filled. The only exception is possibly the lowest level in which the nodes must lean as left as possible
+- **Degenerate or Pathological Tree**: A degenerate or pathological tree is a type of binary tree in which each internal node has a single child, either the left child or the right child
+- **Skewed Binary Tree**: A binary tree is said to be a skewed binary tree if all of its internal nodes have exactly one child, and either left children or right children dominate the tree
+- **Balanced Binary Tree**: A balanced binary tree is also a special type of binary tree in which the difference of height between the left and the right subtrees for each node is at most one
+
+#### Applications
+
+There are many other data structures that are derived from the idea of a binary tree, such as binary search tree, syntax tree, heap, hash tree, red-black tree, binary trie, AVL tree, GGM tree, T-tree, and Treap.
+
+They are useful in File Structures where each file is located in a particular directory and there is a specific hierarchy associated with file and directories. Other real-life applications of a binary tree include binary space partition, heap sort, virtual memory management, and indexing.
 
 ### Binary Search Tree
 
