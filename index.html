@@ -319,6 +319,26 @@
     Binary Tree
   </a>
   
+    <nav class="md-nav" aria-label="Binary Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-binary-tree" class="md-nav__link">
+    Types of Binary Tree
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    Applications
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -550,6 +570,26 @@
     Binary Tree
   </a>
   
+    <nav class="md-nav" aria-label="Binary Tree">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-binary-tree" class="md-nav__link">
+    Types of Binary Tree
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#applications" class="md-nav__link">
+    Applications
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -700,16 +740,29 @@ Random access in not allowed.</li>
 <li>Depth First Traversal</li>
 <li>Breadth First Traversal</li>
 </ol>
-<p>Properties:</p>
+<p>Properties: where h <script type="math/tex"> \to </script> height of the tree</p>
 <ul>
-<li>The maximum number of nodes at level
-<script type="math/tex; mode=display">l = 2^(l-1)</script>
+<li>Total Number of leaf nodes in a Binary Tree = Total Number of nodes with 2 children + 1</li>
+<li>A binary tree of <script type="math/tex">n</script> nodes has <script type="math/tex">(n+1)</script> null references.</li>
+<li>Minimum number of nodes: <script type="math/tex">n = h+1</script>
 </li>
-<li>Maximum number of nodes, where h $\to$ height of the tree
-<script type="math/tex; mode=display">2^h-1</script>
+<li>Maximum number of nodes at any level ‘l’ in a binary tree: <script type="math/tex">n = 2^l</script>
+</li>
+<li>In a Full Binary Tree, maximum number of nodes: <script type="math/tex">n = 2^{h+1}-1</script> and minimum number of nodes: <script type="math/tex">n = 2h+1</script>
 </li>
 </ul>
-<p>eg: They are useful in File Structures where each file is located in a particular directory and there is a specific hierarchy associated with file and directories.</p>
+<h4 id="types-of-binary-tree">Types of Binary Tree</h4>
+<ul>
+<li><strong>Full Binary Tree</strong>: A binary tree is said to be a full binary tree when each internal node has zero or two children</li>
+<li><strong>Perfect Binary Tree</strong>: A perfect binary tree is a special type of binary tree in which all the leaf nodes are at the same level, and each internal node has two children</li>
+<li><strong>Complete Binary Tree</strong>: A binary tree is referred to as a complete binary tree when all of its levels are completely filled. The only exception is possibly the lowest level in which the nodes must lean as left as possible</li>
+<li><strong>Degenerate or Pathological Tree</strong>: A degenerate or pathological tree is a type of binary tree in which each internal node has a single child, either the left child or the right child</li>
+<li><strong>Skewed Binary Tree</strong>: A binary tree is said to be a skewed binary tree if all of its internal nodes have exactly one child, and either left children or right children dominate the tree</li>
+<li><strong>Balanced Binary Tree</strong>: A balanced binary tree is also a special type of binary tree in which the difference of height between the left and the right subtrees for each node is at most one</li>
+</ul>
+<h4 id="applications">Applications</h4>
+<p>There are many other data structures that are derived from the idea of a binary tree, such as binary search tree, syntax tree, heap, hash tree, red-black tree, binary trie, AVL tree, GGM tree, T-tree, and Treap.</p>
+<p>They are useful in File Structures where each file is located in a particular directory and there is a specific hierarchy associated with file and directories. Other real-life applications of a binary tree include binary space partition, heap sort, virtual memory management, and indexing.</p>
 <h3 id="binary-search-tree">Binary Search Tree</h3>
 <p>A tree with following additional properties:</p>
 <ul>
