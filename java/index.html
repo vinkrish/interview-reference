@@ -385,6 +385,27 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#reification" class="md-nav__link">
+    Reification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generics" class="md-nav__link">
+    Generics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflection" class="md-nav__link">
+    Reflection
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#data-strucures" class="md-nav__link">
     Data Strucures
   </a>
@@ -684,6 +705,27 @@
         <li class="md-nav__item">
   <a href="#assignment" class="md-nav__link">
     Assignment
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reification" class="md-nav__link">
+    Reification
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#generics" class="md-nav__link">
+    Generics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#reflection" class="md-nav__link">
+    Reflection
   </a>
   
 </li>
@@ -1017,6 +1059,48 @@ Polymorphism lets you use a abstract supertype reference to refer to one of its 
 <li>A variable referring to an object is just that - a reference variable.</li>
 <li>A reference variable bit holder contains bits representing a way to get to the object.</li>
 </ul>
+<h2 id="reification">Reification</h2>
+<p>In computing, reification has come to mean an explicit representation of a type — that is, run-time type information.<br />
+In Java, arrays reify information about their component types, while generic types do not reify information about their type parameters (while the type of a
+parameterized type is reified without its type parameters).</p>
+<p>In Java, we say that a type is reifiable if the type is completely represented at run time — that is, if erasure does not remove any useful information. </p>
+<p>To be precise, a type is reifiable if it is one of the following:</p>
+<ul>
+<li>A primitive type (such as int)</li>
+<li>A nonparameterized class or interface type (such as Number, String, or Runnable)</li>
+<li>A parameterized type in which all type arguments are unbounded wildcards (such as <code>List&lt;?&gt;, ArrayList&lt;?&gt;, or Map&lt;?, ?&gt;</code>)</li>
+<li>A raw type (such as List, ArrayList, or Map)</li>
+<li>An array whose component type is reifiable (such as <code>int[], Number[], List&lt;?&gt;[], List[], or int[][]</code>)</li>
+</ul>
+<p>A type is not reifiable if it is one of the following:</p>
+<ul>
+<li>A type variable (such as T)</li>
+<li>A parameterized type with actual parameters (such as <code>List&lt;Number&gt;</code>, <code>ArrayList&lt;String&gt;</code>, or <code>Map&lt;String, Integer&gt;</code>)</li>
+<li>A parameterized type with a bound (such as <code>List&lt;? extends Number&gt;</code> or <code>Comparable&lt;? super String&gt;</code>)</li>
+</ul>
+<p>So the type <code>List&lt;? extends Object&gt;</code> is not reifiable, even though it is equivalent to <code>List&lt;?&gt;</code>. Defining reifiable types in this way makes them easy to identify syntactically.</p>
+<p><strong>Principle of Indecent Exposure:</strong> This principle guarantees that the component type at compile time will be a reifiable type.</p>
+<p>Based on above principle, never publicly expose an array where the components do not have a reifiable type.</p>
+<p><strong>Principle of Truth in Advertising:</strong> This principle guarantees that the reified component type returned at run time must be a subtype of the reifiable component type declared at compile time. </p>
+<p>Converse to cast-iron guarantee, above principle illustrates if there are unchecked warnings, then casts inserted by erasure may fail.</p>
+<h2 id="generics">Generics</h2>
+<p>In Java 5, the class Class has been made generic, and now has the form <code>Class&lt;T&gt;</code>. </p>
+<p>What does the T stand for?<br />
+An instance of type <code>Class&lt;T&gt;</code> represents the type T. For example, <code>String.class</code> has type <code>Class&lt;String&gt;</code>.</p>
+<p><strong>cast-iron guarantee:</strong> No cast inserted by erasure will fail, so long as there are no unchecked warnings.</p>
+<p><strong>The Get and Put Principle:</strong><br />
+- use an extends wildcard when you only get values out of a structure
+- use a super wildcard when you only put values into a structure
+- don’t use a wildcard when you both get and put.</p>
+<p>Why can't you create generic array type?<br />
+Java's arrays (unlike generics) contain, at runtime, information about its component type. So you must know the component type when you create the array.</p>
+<h2 id="reflection">Reflection</h2>
+<p>Every type in Java, including primitive types and array types, has a class literal and a corresponding class token.</p>
+<p>generics for reflection: some of the types used for reflection are now generic types.<br />
+reflection for generics: reflection now returns information about generic types.</p>
+<p>Class represents information about the type of an object at run time. The method getClass() is defined on every object and returns a class token that represents the reified type information carried by that object at run-time.</p>
+<p>class always represents a reifiable type, there is no point in parameterizing the class Class with a type that is not reifiable. Hence, the two main methods for producing a class with a type parameter, namely the getClass method and class literals, are both designed to yield a reifiable type for the type parameter in all cases.</p>
+<p>Each class token corresponds to a reifiable type. If you try to reflect a parameterized type, you get the reified information for the corresponding raw type.</p>
 <h2 id="data-strucures">Data Strucures</h2>
 <p>Collections come in four basic flavors:</p>
 <ul>
@@ -1031,55 +1115,87 @@ Polymorphism lets you use a abstract supertype reference to refer to one of its 
 <p><img alt="Classes" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/collection_class.png" /></p>
 <p>The interface and class hierarchy for collections:</p>
 <p><img alt="Collection" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/collection.png" /></p>
-<p>Arrays
-- Arrays are objects in Java that store multiple variables of same type.
-- Arrays can store either primitives or object references.</p>
-<p>List
-- methods related to the index.
-- eg:get(int index), indexof(Object o), add(int index, Object obj)</p>
-<p>ArrayList
-- ordered collection
-- implements RandomAccess, marker Interface
-- supports fast random access</p>
-<p>Vector
-- synchronized for thread safety
-- implement RandomAccess</p>
-<p>LinkedList
-- ordered by index position and also elements are doubly linked to one another
-- choose this for implementing a stack or queue</p>
-<p>Set
-- doesn't allow duplicates [using equals() method to determine identical objects]</p>
-<p>HashSet
-- unsorted, unordered Set
-- uses hashcode of the object being inserted</p>
-<p>LindkedHashset
-- ordered and unsorted Set
-- maintains doubly linked List across all elements
-- iterates through the order in which they were inserted</p>
-<p>TreeSet
-- Sorted Set
-- elements will be in ascending order, according to natural order</p>
-<p>Map
-- maps a unique key(ID) to a specific value
-- can search for a valued based on the key
-- uses equals() method to determine whether two keys are the same or different</p>
-<p>HashMap
-- unsorted and unordered Map
-- allows one null key and multiple null values in a collection</p>
-<p>LinkedHashMap
-- maintains insertion order (optionally access order)
-- faster iteration</p>
-<p>Hashtable
-- doesn't allow any null
-- can't synchronize class: only key methods of the class are synchronized</p>
-<p>TreeMap
-- Sorted Map
-- can define custom sort order(via a Comparable or Comparator)</p>
-<p>Queue
-- holds things to be processed in some way</p>
-<p>Priority Queue
-- to create "priority-in, priority-out" queue as opposed to FIFO
-- ordered either by natural ordering or according to a Comparator</p>
+<p>Arrays</p>
+<ul>
+<li>Arrays are objects in Java that store multiple variables of same type.</li>
+<li>Arrays can store either primitives or object references.</li>
+</ul>
+<p>List</p>
+<ul>
+<li>methods related to the index.</li>
+<li>eg:get(int index), indexof(Object o), add(int index, Object obj)</li>
+</ul>
+<p>ArrayList</p>
+<ul>
+<li>ordered collection</li>
+<li>implements RandomAccess, marker Interface</li>
+<li>supports fast random access</li>
+</ul>
+<p>Vector</p>
+<ul>
+<li>synchronized for thread safety</li>
+<li>implement RandomAccess</li>
+</ul>
+<p>LinkedList</p>
+<ul>
+<li>ordered by index position and also elements are doubly linked to one another</li>
+<li>choose this for implementing a stack or queue</li>
+</ul>
+<p>Set</p>
+<ul>
+<li>doesn't allow duplicates [using equals() method to determine identical objects]</li>
+</ul>
+<p>HashSet</p>
+<ul>
+<li>unsorted, unordered Set</li>
+<li>uses hashcode of the object being inserted</li>
+</ul>
+<p>LindkedHashset</p>
+<ul>
+<li>ordered and unsorted Set</li>
+<li>maintains doubly linked List across all elements</li>
+<li>iterates through the order in which they were inserted</li>
+</ul>
+<p>TreeSet</p>
+<ul>
+<li>Sorted Set</li>
+<li>elements will be in ascending order, according to natural order</li>
+</ul>
+<p>Map</p>
+<ul>
+<li>maps a unique key(ID) to a specific value</li>
+<li>can search for a valued based on the key</li>
+<li>uses equals() method to determine whether two keys are the same or different</li>
+</ul>
+<p>HashMap</p>
+<ul>
+<li>unsorted and unordered Map</li>
+<li>allows one null key and multiple null values in a collection</li>
+</ul>
+<p>LinkedHashMap</p>
+<ul>
+<li>maintains insertion order (optionally access order)</li>
+<li>faster iteration</li>
+</ul>
+<p>Hashtable</p>
+<ul>
+<li>doesn't allow any null</li>
+<li>can't synchronize class: only key methods of the class are synchronized</li>
+</ul>
+<p>TreeMap</p>
+<ul>
+<li>Sorted Map</li>
+<li>can define custom sort order(via a Comparable or Comparator)</li>
+</ul>
+<p>Queue</p>
+<ul>
+<li>holds things to be processed in some way</li>
+</ul>
+<p>Priority Queue</p>
+<ul>
+<li>to create "priority-in, priority-out" queue as opposed to FIFO</li>
+<li>ordered either by natural ordering or according to a Comparator</li>
+</ul>
 <h2 id="comparable-interface">Comparable Interface:</h2>
 <ul>
 <li>A comparable object is capable of comparing itself with another object.</li>
