@@ -1,21 +1,7 @@
-site_name: Interview
+site_name: Interview Reference
 site_author: 'Vinay Krishna'
 site_url: 'https://vinkrish.github.io/interview-reference/'
-theme:
-  name: 'material'
-  palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: default
-      toggle:
-        icon: material/weather-night
-        name: Switch to dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: slate
-      toggle:
-        icon: material/weather-sunny
-        name: Switch to light mode
-extra_css:
-  - stylesheets/extra.css
+theme: 'readthedocs'
 
 # Repository
 repo_name: 'vinkrish/interview-reference'

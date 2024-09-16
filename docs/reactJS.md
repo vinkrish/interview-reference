@@ -76,7 +76,7 @@ React portals provide a way to render components outside the main DOM hierarchy.
 
 ## What is the difference between controlled and uncontrolled components?
 
-- Controlled components are those whose form data is handled by the React component state. Input elements like <input>, <textarea>, and <select> are controlled by the component's state using the onChange event handler.
+- Controlled components are those whose form data is handled by the React component state. Input elements like `<input>`, `<textarea>`, and `<select>` are controlled by the component's state using the onChange event handler.
 - Uncontrolled components use refs to directly access the DOM element’s values.
 
 ## What is the useReducer hook?
