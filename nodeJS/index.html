@@ -62,6 +62,12 @@
               <ul class="current">
                 <li class="toctree-l1 current"><a class="reference internal current" href="#">NodeJS</a>
     <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-nodejs">What is Node.js?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#explain-event-driven-programming-in-nodejs">Explain event-driven programming in Node.js?</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#what-is-the-difference-between-require-and-import-in-nodejs">What is the difference between require() and import in Node.js?</a>
+    </li>
     </ul>
                 </li>
               </ul>
@@ -89,7 +95,8 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <p><a href="https://vigowebs.medium.com/frequently-asked-node-js-interview-questions-and-answers-b74fa1f20678">Follow here</a></p>
+                <h1 id="nodejs">NodeJS</h1>
+<p><a href="https://vigowebs.medium.com/frequently-asked-node-js-interview-questions-and-answers-b74fa1f20678">Follow here</a></p>
 <h2 id="what-is-nodejs">What is Node.js?</h2>
 <p>Node.js is a runtime environment that allows you to run JavaScript code on the server-side, outside of a web browser. It is built on the V8 JavaScript engine, which is the same engine that powers Google Chrome, but it extends the capabilities of JavaScript by providing server-side APIs like file system access, network requests, and more.</p>
 <p>Key points about Node.js:</p>
@@ -102,40 +109,34 @@
 <h2 id="explain-event-driven-programming-in-nodejs">Explain event-driven programming in Node.js?</h2>
 <p>Event-driven programming is a key concept in Node.js, and it refers to the design paradigm where the flow of a program is determined by events like user actions (clicks, keyboard inputs), messages, or system events (file I/O, HTTP requests). In Node.js, event-driven programming allows asynchronous, non-blocking execution, enabling the server to handle many connections concurrently without being tied up by long-running operations.</p>
 <p>Here’s a breakdown of how event-driven programming works in Node.js:</p>
-<ol>
-<li>
-<p>Event Loop:
+<p><strong>1. Event Loop</strong>:
 At the core of Node.js is the event loop, which continuously monitors for incoming events or tasks. These events can be HTTP requests, file system operations, timers, or custom events. When an event occurs, the event loop triggers corresponding callback functions that were registered to handle those events.</p>
-</li>
-<li>
-<p>Blocking (Synchronous): If a function performs a task synchronously, it will block the event loop, meaning no other operations can be processed until the task is complete.</p>
-</li>
-<li>
-<p>Non-blocking (Asynchronous): In contrast, asynchronous operations are handled by the event loop without blocking it. Once the asynchronous task is complete, the event loop invokes the associated callback.</p>
-</li>
-<li>
-<p>Event Emitter:</p>
-</li>
-</ol>
+<ul>
+<li>Blocking (Synchronous): If a function performs a task synchronously, it will block the event loop, meaning no other operations can be processed until the task is complete.</li>
+<li>Non-blocking (Asynchronous): In contrast, asynchronous operations are handled by the event loop without blocking it. Once the asynchronous task is complete, the event loop invokes the associated callback.</li>
+</ul>
+<p><strong>2. Event Emitter</strong>:</p>
 <p>Node.js has an EventEmitter class that helps in managing event-driven architecture. Any object that listens for events or triggers events is typically an instance of the EventEmitter class. You can attach listeners to events, and when the event occurs, Node.js invokes the corresponding callback.</p>
-<ol>
-<li>Callbacks and Listeners:
-In an event-driven system, callbacks (also known as event handlers or listeners) are functions that are executed when a particular event occurs. When an asynchronous operation finishes, a callback function is executed, which allows Node.js to continue running other operations while waiting for the event to occur.</li>
-</ol>
+<p><strong>3. Callbacks and Listeners</strong>:
+In an event-driven system, callbacks (also known as event handlers or listeners) are functions that are executed when a particular event occurs. When an asynchronous operation finishes, a callback function is executed, which allows Node.js to continue running other operations while waiting for the event to occur.</p>
 <p>How it works:</p>
 <ul>
 <li>Registering a listener: You attach a function (callback) to an event. This function will be executed whenever the event is emitted.</li>
-<li>
-<p>Emitting an event: When the event occurs (e.g., an HTTP request is received), the event emitter "emits" the event, triggering any attached listeners.</p>
-</li>
-<li>
-<p>Advantages of Event-driven Programming in Node.js:</p>
-</li>
-<li>
-<p>Non-blocking I/O: This is particularly useful in scenarios where you have I/O-heavy operations (like reading files, querying databases) because the event loop doesn't wait for these operations to complete before moving on to handle other tasks.</p>
-</li>
+<li>Emitting an event: When the event occurs (e.g., an HTTP request is received), the event emitter "emits" the event, triggering any attached listeners.</li>
+</ul>
+<p><strong>4. Advantages of Event-driven Programming in Node.js</strong>:</p>
+<ul>
+<li>Non-blocking I/O: This is particularly useful in scenarios where you have I/O-heavy operations (like reading files, querying databases) because the event loop doesn't wait for these operations to complete before moving on to handle other tasks.</li>
 <li>Scalability: Since Node.js doesn’t block the execution thread for I/O operations, it can handle a large number of concurrent connections with minimal overhead.</li>
 <li>Efficiency: Event-driven programming helps utilize system resources efficiently, especially in handling real-time applications, chat applications, or APIs that involve many simultaneous users or connections.</li>
+</ul>
+<h2 id="what-is-the-difference-between-require-and-import-in-nodejs">What is the difference between require() and import in Node.js?</h2>
+<p><strong>1. Module Systems</strong>:</p>
+<ul>
+<li><code>require()</code>: This is the standard way of importing modules in Node.js using the CommonJS module system. It has been in use since the early days of Node.js. </li>
+<li><code>require()</code> is dynamic, meaning it can be called conditionally, at any point in the code. This allows you to load modules at runtime.</li>
+<li><code>import</code>: This is part of the ES6 (ECMAScript 2015) standard, also known as the ESM (ECMAScript Module) system, which was introduced later and is now supported in modern JavaScript environments, including Node.js (since version 12+ with certain configurations). </li>
+<li><code>import</code> is static, meaning it must be called at the top level of the module and cannot be conditionally imported. All imports are resolved at the start of the program.</li>
 </ul>
               
             </div>
