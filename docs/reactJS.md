@@ -1,9 +1,131 @@
-## How Virtual-DOM works in React
+## What is React?
 
-React creates a virtual DOM. When state changes in a component it firstly runs a “diffing” algorithm, which identifies what has changed in the virtual DOM. The second step is reconciliation, where it updates the DOM with the results of diff.
+React is a JavaScript library developed by Facebook for building user interfaces, especially single-page applications. It is component-based, allows the development of reusable UI components, and helps in creating dynamic web apps with great performance.
 
-The HTML DOM is always tree-structured — which is allowed by the structure of HTML document. The DOM trees are huge nowadays because of large apps. Since we are more and more pushed towards dynamic web apps (Single Page Applications — SPAs), we need to modify the DOM tree incessantly and a lot. And this is a real performance and development pain.
-The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. It is not invented by React but it uses it and provides it for free. ReactElements lives in the virtual DOM. They make the basic nodes here. Once we defined the elements, ReactElements can be render into the "real" DOM.
+
+## What are the key features of React?
+
+- Virtual DOM: Optimizes updates by re-rendering only what’s necessary.
+- Component-based architecture: Breaks UI into reusable pieces.
+- One-way data binding: Data flows in one direction (from parent to child components).
+- JSX: A syntax extension that allows writing HTML in JavaScript.
+- Declarative UI: Developers describe what UI should look like.
+
+## What is JSX?
+
+JSX stands for JavaScript XML. It allows writing HTML-like syntax in JavaScript code. Browsers don’t understand JSX directly, so it’s compiled into regular JavaScript using tools like Babel.
+
+You can embed any JavaScript expression in JSX by wrapping it in curly braces. After compilation, JSX expressions become regular JavaScript objects. This means that you can use JSX inside of if statements and for loops, assign it to variables, accept it as arguments, and return it from functions
+
+## What are components in React?
+
+Components are the building blocks of a React application. They allow splitting the UI into independent, reusable pieces. There are two types:
+
+- Class Components: ES6 classes that extend React.Component and use lifecycle methods.
+- Functional Components: JavaScript functions that return JSX and use hooks for managing state and lifecycle.
+
+## What is the Virtual DOM? How does it work?
+
+The Virtual DOM is a lightweight in-memory representation of the actual DOM. React updates the Virtual DOM first, calculates the differences (diffing), and then updates the real DOM only where necessary. This minimizes direct DOM manipulations, improving performance.
+
+## What are props in React?
+
+Props (short for properties) are read-only attributes passed from a parent component to a child component. They allow passing data and methods between components.
+
+## What is state in React?
+
+State is a built-in React object used to store data or information about the component. Unlike props, state is mutable and managed within the component. When state changes, React re-renders the component.
+
+## What are hooks in React?
+
+Hooks are special functions that allow using state and other React features in functional components. The most commonly used hooks are:
+
+- useState for state management.
+- useEffect for managing side effects like API calls, timers, etc.
+- useContext for accessing React context.
+- useMemo and useCallback for optimizing performance.
+
+## What is the difference between state and props?
+
+- Props are passed from parent to child components, are immutable, and allow sharing data across components.
+- State is local to the component, mutable, and used to manage internal data that can change over time.
+
+## What is the purpose of useEffect in React?
+
+ `useEffect` is a hook used to perform side effects in functional components, like fetching data, updating the DOM, or setting up subscriptions. It runs after the render cycle and can optionally clean up after itself by returning a function.
+
+## What is the purpose of keys in React?
+
+Keys help React identify which items in a list have changed, are added, or are removed. This improves the efficiency of updating the DOM and is crucial when rendering lists of components.
+
+## What are higher-order components (HOC) in React?
+
+A HOC is a pattern in which a function takes a component and returns a new component with added functionality. It's a way to reuse component logic. For example, adding authentication checks to multiple components.
+
+## What is the Context API in React?
+
+The Context API allows for sharing state and functions across multiple components without passing props down manually at every level. It is particularly useful for managing global state like themes, user sessions, etc.
+
+## What is lazy loading in React?
+
+Lazy loading in React is a way to defer loading components until they are needed, improving the initial load time. React provides React.lazy() and Suspense for implementing lazy loading.
+
+## What are React portals?
+
+React portals provide a way to render components outside the main DOM hierarchy. They are useful for rendering modals, tooltips, or popups that require being placed at the root level of the DOM.
+
+## What is the difference between controlled and uncontrolled components?
+
+- Controlled components are those whose form data is handled by the React component state. Input elements like <input>, <textarea>, and <select> are controlled by the component's state using the onChange event handler.
+- Uncontrolled components use refs to directly access the DOM element’s values.
+
+## What is the useReducer hook?
+
+`useReducer` is an alternative to useState when managing more complex state logic. It accepts a reducer function (state, action) and an initial state and returns the current state paired with a dispatch method to trigger state updates.
+
+## What is memoization in React?
+
+Memoization is an optimization technique used to speed up rendering by caching results. React provides React.memo and hooks like useMemo and useCallback to avoid unnecessary re-renders and expensive computations.
+
+## What is the difference between useMemo and useCallback?
+
+- useMemo: Returns a memoized value, used to optimize expensive computations.
+- useCallback: Returns a memoized function reference, useful when passing functions as props to child components to prevent re-renders.
+
+## How can you improve the performance of a React app?
+
+- Use React's memoization (React.memo, useMemo, useCallback).
+- Use Code Splitting and Lazy Loading.
+- Avoid anonymous functions in render.
+- Implement shouldComponentUpdate or use PureComponent.
+- Optimize re-rendering by managing state efficiently.
+- Use React Profiler to identify performance bottlenecks.
+
+## What is Redux, and how does it relate to React?
+
+Redux is a state management library that can be used with React (or other frameworks). It provides a central store for managing application state and follows a unidirectional data flow. In React, it's typically used with the react-redux library for binding the store with React components.
+
+## What is the difference between Redux and Context API?
+
+Both Redux and the Context API solve similar problems: sharing state across components. However:
+
+- Redux is more powerful for complex state management, providing middlewares, actions, reducers, and a strict structure.
+- Context API is simpler and suitable for smaller apps with less complex state needs.
+
+## What is React Router?
+
+React Router is a popular routing library for React. It allows for dynamic routing, enabling navigation between different views or components in a single-page application without refreshing the page.
+
+## What are render props?
+
+Render props is a technique for sharing code between React components using a prop whose value is a function. It allows for more dynamic and reusable components.
+
+## How do you handle forms in React?
+
+In React, forms can be handled using:
+
+- Controlled components, where form elements are bound to the state and update via onChange handlers.
+- Uncontrolled components, using refs to access form values directly from the DOM.
 
 ## How React Works
 
@@ -30,10 +152,6 @@ Four ways to create component:
 - ES6 stateless function
 
 All properties of object is available as props in compnent.
-
-## JSX
-
-JSX is a syntax extension to JavaScript and comes with the full power of JavaScript. JSX produces React “elements”. You can embed any JavaScript expression in JSX by wrapping it in curly braces. After compilation, JSX expressions become regular JavaScript objects. This means that you can use JSX inside of if statements and for loops, assign it to variables, accept it as arguments, and return it from functions. Eventhough React does not require JSX, it is the recommended way of describing our UI in React app.
 
 ## Redux
 
@@ -109,10 +227,6 @@ children is passes down from react router `{ this.props.children }`
 
     It is good to prefer PureComponent over Component whenever we never mutate our objects.
 
-6. **What is Redux Thunk used for?**
-
-    Redux thunk is middleware that allows us to write action creators that return a function instead of an action. The thunk can then be used to delay the dispatch of an action if a certain condition is met. This allows us to handle the asyncronous dispatching of actions. The inner function receives the store methods dispatch and getState as parameters.
-
 7. **What is a higher order component?**
 
     A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API. They are a pattern that emerges from React’s compositional nature.
@@ -120,14 +234,6 @@ children is passes down from react router `{ this.props.children }`
     A higher-order component is a function that takes a component and returns a new component.
 
     HOC’s allow you to reuse code, logic and bootstrap abstraction. HOCs are common in third-party React libraries. The most common is probably Redux’s connect function. Beyond simply sharing utility libraries and simple composition, HOCs are the best way to share behavior between React Components. If you find yourself writing a lot of code in different places that does the same thing, you may be able to refactor that code into a reusable HOC.
-
-8. **What is the difference between state and props?**
-
-    The state is a data structure that starts with a default value when a Component mounts. It may be mutated across time, mostly as a result of user events.
-
-    Props (short for properties) are a Component’s configuration. Props are how components talk to each other. They are received from above component and immutable as far as the Component receiving them is concerned. A Component cannot change its props, but it is responsible for putting together the props of its child Components. Props do not have to just be data — callback functions may be passed in as props.
-
-    There is also the case that we can have default props so that props are set even if a parent component doesn’t pass props down.
 
 9. **What are the differences between a class component and functional component?**
 
