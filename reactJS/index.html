@@ -1,465 +1,185 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="Vinay Krishna" /><link rel="canonical" href="https://vinkrish.github.io/interview-reference/reactJS/" />
+      <link rel="shortcut icon" href="../img/favicon.ico" />
+    <title>ReactJS - Interview Reference</title>
+    <link rel="stylesheet" href="../css/theme.css" />
+    <link rel="stylesheet" href="../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "ReactJS";
+        var mkdocs_page_input_path = "reactJS.md";
+        var mkdocs_page_url = "/interview-reference/reactJS/";
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
 
-<!doctype html>
-<html lang="en" class="no-js">
-  <head>
-    
-      <meta charset="utf-8">
-      <meta name="viewport" content="width=device-width,initial-scale=1">
-      
-      
-      
-        <meta name="author" content="Vinay Krishna">
-      
-      
-        <link rel="canonical" href="https://vinkrish.github.io/interview-reference/reactJS/">
-      
-      <link rel="icon" href="../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.2.2, mkdocs-material-7.2.4">
-    
-    
-      
-        <title>ReactJS - Interview</title>
-      
-    
-    
-      <link rel="stylesheet" href="../assets/stylesheets/main.f7f47774.min.css">
-      
-        
-        <link rel="stylesheet" href="../assets/stylesheets/palette.3f5d1f46.min.css">
-        
-      
-    
-    
-    
-      
-        
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
-        <style>:root{--md-text-font-family:"Roboto";--md-code-font-family:"Roboto Mono"}</style>
-      
-    
-    
-    
-      <link rel="stylesheet" href="../stylesheets/extra.css">
-    
-    
-      
+<body class="wy-body-for-nav" role="document">
 
-
-    
-    
-  </head>
-  
-  
-    
-    
-      
-    
-    
-    
-    
-    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent="">
-  
-    
-    <script>function __prefix(e){return new URL("..",location).pathname+"."+e}function __get(e,t=localStorage){return JSON.parse(t.getItem(__prefix(e)))}</script>
-    
-      <script>var palette=__get("__palette");if(null!==palette&&"object"==typeof palette.color)for(var key in palette.color)document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
-    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
-    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
-    <label class="md-overlay" for="__drawer"></label>
-    <div data-md-component="skip">
-      
-        
-        <a href="#how-virtual-dom-works-in-react" class="md-skip">
-          Skip to content
-        </a>
-      
-    </div>
-    <div data-md-component="announce">
-      
-    </div>
-    
-      <header class="md-header" data-md-component="header">
-  <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href=".." title="Interview" class="md-header__button md-logo" aria-label="Interview" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    <label class="md-header__button md-icon" for="__drawer">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
-    </label>
-    <div class="md-header__title" data-md-component="header-title">
-      <div class="md-header__ellipsis">
-        <div class="md-header__topic">
-          <span class="md-ellipsis">
-            Interview
-          </span>
-        </div>
-        <div class="md-header__topic" data-md-component="header-topic">
-          <span class="md-ellipsis">
-            
-              ReactJS
-            
-          </span>
-        </div>
-      </div>
-    </div>
-    
-      <form class="md-header__option" data-md-component="palette">
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
-          
-            <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m17.75 4.09-2.53 1.94.91 3.06-2.63-1.81-2.63 1.81.91-3.06-2.53-1.94L12.44 4l1.06-3 1.06 3 3.19.09m3.5 6.91-1.64 1.25.59 1.98-1.7-1.17-1.7 1.17.59-1.98L15.75 11l2.06-.05L18.5 9l.69 1.95 2.06.05m-2.28 4.95c.83-.08 1.72 1.1 1.19 1.85-.32.45-.66.87-1.08 1.27C15.17 23 8.84 23 4.94 19.07c-3.91-3.9-3.91-10.24 0-14.14.4-.4.82-.76 1.27-1.08.75-.53 1.93.36 1.85 1.19-.27 2.86.69 5.83 2.89 8.02a9.96 9.96 0 0 0 8.02 2.89m-1.64 2.02a12.08 12.08 0 0 1-7.8-3.47c-2.17-2.19-3.33-5-3.49-7.82-2.81 3.14-2.7 7.96.31 10.98 3.02 3.01 7.84 3.12 10.98.31z"/></svg>
-            </label>
-          
-        
-          
-          
-          <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="" data-md-color-accent=""  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
-          
-            <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3m0-7 2.39 3.42C13.65 5.15 12.84 5 12 5c-.84 0-1.65.15-2.39.42L12 2M3.34 7l4.16-.35A7.2 7.2 0 0 0 5.94 8.5c-.44.74-.69 1.5-.83 2.29L3.34 7m.02 10 1.76-3.77a7.131 7.131 0 0 0 2.38 4.14L3.36 17M20.65 7l-1.77 3.79a7.023 7.023 0 0 0-2.38-4.15l4.15.36m-.01 10-4.14.36c.59-.51 1.12-1.14 1.54-1.86.42-.73.69-1.5.83-2.29L20.64 17M12 22l-2.41-3.44c.74.27 1.55.44 2.41.44.82 0 1.63-.17 2.37-.44L12 22z"/></svg>
-            </label>
-          
-        
-      </form>
-    
-    
-    
-      <label class="md-header__button md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-      </label>
-      
-<div class="md-search" data-md-component="search" role="dialog">
-  <label class="md-search__overlay" for="__search"></label>
-  <div class="md-search__inner" role="search">
-    <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
-      <label class="md-search__icon md-icon" for="__search">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-      </label>
-      <nav class="md-search__options" aria-label="Search">
-        
-        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
-        </button>
-      </nav>
-      
-    </form>
-    <div class="md-search__output">
-      <div class="md-search__scrollwrap" data-md-scrollfix>
-        <div class="md-search-result" data-md-component="search-result">
-          <div class="md-search-result__meta">
-            Initializing search
-          </div>
-          <ol class="md-search-result__list"></ol>
-        </div>
-      </div>
-    </div>
-  </div>
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href=".." class="icon icon-home"> Interview Reference
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" title="Type search term here" />
+  </form>
 </div>
-    
-    
-      <div class="md-header__source">
-        
-<a href="https://github.com/vinkrish/interview-reference/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    vinkrish/interview-reference
-  </div>
-</a>
       </div>
-    
-  </nav>
-</header>
-    
-    <div class="md-container" data-md-component="container">
-      
-      
-        
-      
-      <main class="md-main" data-md-component="main">
-        <div class="md-main__inner md-grid">
-          
-            
-              
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
 
-
-<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
-  <label class="md-nav__title" for="__drawer">
-    <a href=".." title="Interview" class="md-nav__button md-logo" aria-label="Interview" data-md-component="logo">
-      
-  
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
-
-    </a>
-    Interview
-  </label>
-  
-    <div class="md-nav__source">
-      
-<a href="https://github.com/vinkrish/interview-reference/" title="Go to repository" class="md-source" data-md-component="source">
-  <div class="md-source__icon md-icon">
-    
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
-  </div>
-  <div class="md-source__repository">
-    vinkrish/interview-reference
-  </div>
-</a>
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="..">About</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../angular/">Angular</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../java/">Java</a>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../javascript/">JavaScript</a>
+                </li>
+              </ul>
+              <ul class="current">
+                <li class="toctree-l1 current"><a class="reference internal current" href="#">ReactJS</a>
+    <ul class="current">
+    </ul>
+                </li>
+              </ul>
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../nodeJS/">NodeJS</a>
+                </li>
+              </ul>
+      </div>
     </div>
-  
-  <ul class="md-nav__list" data-md-scrollfix>
-    
-      
-      
-      
+    </nav>
 
-  
-  
-  
-    <li class="md-nav__item">
-      <a href=".." class="md-nav__link">
-        About
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../angular/" class="md-nav__link">
-        Angular
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../java/" class="md-nav__link">
-        Java
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../javascript/" class="md-nav__link">
-        JavaScript
-      </a>
-    </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
-      
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          ReactJS
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        ReactJS
-      </a>
-      
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="..">Interview Reference</a>
         
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-virtual-dom-works-in-react" class="md-nav__link">
-    How Virtual-DOM works in React
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-react-works" class="md-nav__link">
-    How React Works
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#jsx" class="md-nav__link">
-    JSX
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#redux" class="md-nav__link">
-    Redux
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
-    Questions
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".." class="icon icon-home" aria-label="Docs"></a></li>
+      <li class="breadcrumb-item active">ReactJS</li>
+    <li class="wy-breadcrumbs-aside">
+          <a href="https://github.com/vinkrish/interview-reference/edit/master/docs/reactJS.md">Edit on vinkrish/interview-reference</a>
     </li>
-  
-
-    
-      
-      
-      
-
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../nodeJS/" class="md-nav__link">
-        NodeJS
-      </a>
-    </li>
-  
-
-    
   </ul>
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-            
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
-                <div class="md-sidebar__scrollwrap">
-                  <div class="md-sidebar__inner">
-                    
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-virtual-dom-works-in-react" class="md-nav__link">
-    How Virtual-DOM works in React
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#how-react-works" class="md-nav__link">
-    How React Works
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#jsx" class="md-nav__link">
-    JSX
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#redux" class="md-nav__link">
-    Redux
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#questions" class="md-nav__link">
-    Questions
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-                  </div>
-                </div>
-              </div>
-            
-          
-          <div class="md-content" data-md-component="content">
-            <article class="md-content__inner md-typeset">
-              
-                
-                  <a href="https://github.com/vinkrish/interview-reference/edit/master/docs/reactJS.md" title="Edit this page" class="md-content__button md-icon">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
-                  </a>
-                
-                
-                  <h1>ReactJS</h1>
-                
-                <h2 id="how-virtual-dom-works-in-react">How Virtual-DOM works in React</h2>
-<p>React creates a virtual DOM. When state changes in a component it firstly runs a “diffing” algorithm, which identifies what has changed in the virtual DOM. The second step is reconciliation, where it updates the DOM with the results of diff.</p>
-<p>The HTML DOM is always tree-structured — which is allowed by the structure of HTML document. The DOM trees are huge nowadays because of large apps. Since we are more and more pushed towards dynamic web apps (Single Page Applications — SPAs), we need to modify the DOM tree incessantly and a lot. And this is a real performance and development pain.
-The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detached from the browser-specific implementation details. It is not invented by React but it uses it and provides it for free. ReactElements lives in the virtual DOM. They make the basic nodes here. Once we defined the elements, ReactElements can be render into the "real" DOM.</p>
+                <h2 id="what-is-react">What is React?</h2>
+<p>React is a JavaScript library developed by Facebook for building user interfaces, especially single-page applications. It is component-based, allows the development of reusable UI components, and helps in creating dynamic web apps with great performance.</p>
+<h2 id="what-are-the-key-features-of-react">What are the key features of React?</h2>
+<ul>
+<li>Virtual DOM: Optimizes updates by re-rendering only what’s necessary.</li>
+<li>Component-based architecture: Breaks UI into reusable pieces.</li>
+<li>One-way data binding: Data flows in one direction (from parent to child components).</li>
+<li>JSX: A syntax extension that allows writing HTML in JavaScript.</li>
+<li>Declarative UI: Developers describe what UI should look like.</li>
+</ul>
+<h2 id="what-is-jsx">What is JSX?</h2>
+<p>JSX stands for JavaScript XML. It allows writing HTML-like syntax in JavaScript code. Browsers don’t understand JSX directly, so it’s compiled into regular JavaScript using tools like Babel.</p>
+<p>You can embed any JavaScript expression in JSX by wrapping it in curly braces. After compilation, JSX expressions become regular JavaScript objects. This means that you can use JSX inside of if statements and for loops, assign it to variables, accept it as arguments, and return it from functions</p>
+<h2 id="what-are-components-in-react">What are components in React?</h2>
+<p>Components are the building blocks of a React application. They allow splitting the UI into independent, reusable pieces. There are two types:</p>
+<ul>
+<li>Class Components: ES6 classes that extend React.Component and use lifecycle methods.</li>
+<li>Functional Components: JavaScript functions that return JSX and use hooks for managing state and lifecycle.</li>
+</ul>
+<h2 id="what-is-the-virtual-dom-how-does-it-work">What is the Virtual DOM? How does it work?</h2>
+<p>The Virtual DOM is a lightweight in-memory representation of the actual DOM. React updates the Virtual DOM first, calculates the differences (diffing), and then updates the real DOM only where necessary. This minimizes direct DOM manipulations, improving performance.</p>
+<h2 id="what-are-props-in-react">What are props in React?</h2>
+<p>Props (short for properties) are read-only attributes passed from a parent component to a child component. They allow passing data and methods between components.</p>
+<h2 id="what-is-state-in-react">What is state in React?</h2>
+<p>State is a built-in React object used to store data or information about the component. Unlike props, state is mutable and managed within the component. When state changes, React re-renders the component.</p>
+<h2 id="what-are-hooks-in-react">What are hooks in React?</h2>
+<p>Hooks are special functions that allow using state and other React features in functional components. The most commonly used hooks are:</p>
+<ul>
+<li>useState for state management.</li>
+<li>useEffect for managing side effects like API calls, timers, etc.</li>
+<li>useContext for accessing React context.</li>
+<li>useMemo and useCallback for optimizing performance.</li>
+</ul>
+<h2 id="what-is-the-difference-between-state-and-props">What is the difference between state and props?</h2>
+<ul>
+<li>Props are passed from parent to child components, are immutable, and allow sharing data across components.</li>
+<li>State is local to the component, mutable, and used to manage internal data that can change over time.</li>
+</ul>
+<h2 id="what-is-the-purpose-of-useeffect-in-react">What is the purpose of useEffect in React?</h2>
+<p><code>useEffect</code> is a hook used to perform side effects in functional components, like fetching data, updating the DOM, or setting up subscriptions. It runs after the render cycle and can optionally clean up after itself by returning a function.</p>
+<h2 id="what-is-the-purpose-of-keys-in-react">What is the purpose of keys in React?</h2>
+<p>Keys help React identify which items in a list have changed, are added, or are removed. This improves the efficiency of updating the DOM and is crucial when rendering lists of components.</p>
+<h2 id="what-are-higher-order-components-hoc-in-react">What are higher-order components (HOC) in React?</h2>
+<p>A HOC is a pattern in which a function takes a component and returns a new component with added functionality. It's a way to reuse component logic. For example, adding authentication checks to multiple components.</p>
+<h2 id="what-is-the-context-api-in-react">What is the Context API in React?</h2>
+<p>The Context API allows for sharing state and functions across multiple components without passing props down manually at every level. It is particularly useful for managing global state like themes, user sessions, etc.</p>
+<h2 id="what-is-lazy-loading-in-react">What is lazy loading in React?</h2>
+<p>Lazy loading in React is a way to defer loading components until they are needed, improving the initial load time. React provides React.lazy() and Suspense for implementing lazy loading.</p>
+<h2 id="what-are-react-portals">What are React portals?</h2>
+<p>React portals provide a way to render components outside the main DOM hierarchy. They are useful for rendering modals, tooltips, or popups that require being placed at the root level of the DOM.</p>
+<h2 id="what-is-the-difference-between-controlled-and-uncontrolled-components">What is the difference between controlled and uncontrolled components?</h2>
+<ul>
+<li>Controlled components are those whose form data is handled by the React component state. Input elements like <code>&lt;input&gt;</code>, <code>&lt;textarea&gt;</code>, and <code>&lt;select&gt;</code> are controlled by the component's state using the onChange event handler.</li>
+<li>Uncontrolled components use refs to directly access the DOM element’s values.</li>
+</ul>
+<h2 id="what-is-the-usereducer-hook">What is the useReducer hook?</h2>
+<p><code>useReducer</code> is an alternative to useState when managing more complex state logic. It accepts a reducer function (state, action) and an initial state and returns the current state paired with a dispatch method to trigger state updates.</p>
+<h2 id="what-is-memoization-in-react">What is memoization in React?</h2>
+<p>Memoization is an optimization technique used to speed up rendering by caching results. React provides React.memo and hooks like useMemo and useCallback to avoid unnecessary re-renders and expensive computations.</p>
+<h2 id="what-is-the-difference-between-usememo-and-usecallback">What is the difference between useMemo and useCallback?</h2>
+<ul>
+<li>useMemo: Returns a memoized value, used to optimize expensive computations.</li>
+<li>useCallback: Returns a memoized function reference, useful when passing functions as props to child components to prevent re-renders.</li>
+</ul>
+<h2 id="how-can-you-improve-the-performance-of-a-react-app">How can you improve the performance of a React app?</h2>
+<ul>
+<li>Use React's memoization (React.memo, useMemo, useCallback).</li>
+<li>Use Code Splitting and Lazy Loading.</li>
+<li>Avoid anonymous functions in render.</li>
+<li>Implement shouldComponentUpdate or use PureComponent.</li>
+<li>Optimize re-rendering by managing state efficiently.</li>
+<li>Use React Profiler to identify performance bottlenecks.</li>
+</ul>
+<h2 id="what-is-redux-and-how-does-it-relate-to-react">What is Redux, and how does it relate to React?</h2>
+<p>Redux is a state management library that can be used with React (or other frameworks). It provides a central store for managing application state and follows a unidirectional data flow. In React, it's typically used with the react-redux library for binding the store with React components.</p>
+<h2 id="what-is-the-difference-between-redux-and-context-api">What is the difference between Redux and Context API?</h2>
+<p>Both Redux and the Context API solve similar problems: sharing state across components. However:</p>
+<ul>
+<li>Redux is more powerful for complex state management, providing middlewares, actions, reducers, and a strict structure.</li>
+<li>Context API is simpler and suitable for smaller apps with less complex state needs.</li>
+</ul>
+<h2 id="what-is-react-router">What is React Router?</h2>
+<p>React Router is a popular routing library for React. It allows for dynamic routing, enabling navigation between different views or components in a single-page application without refreshing the page.</p>
+<h2 id="what-are-render-props">What are render props?</h2>
+<p>Render props is a technique for sharing code between React components using a prop whose value is a function. It allows for more dynamic and reusable components.</p>
+<h2 id="how-do-you-handle-forms-in-react">How do you handle forms in React?</h2>
+<p>In React, forms can be handled using:</p>
+<ul>
+<li>Controlled components, where form elements are bound to the state and update via onChange handlers.</li>
+<li>Uncontrolled components, using refs to access form values directly from the DOM.</li>
+</ul>
 <h2 id="how-react-works">How React Works</h2>
 <p>Whenever a ReactComponent is changing the state, diff algorithm in React runs and identifies what has changed. And then it updates the DOM with the results of diff. The point is - it’s done faster than it would be in the regular DOM.</p>
 <ul>
@@ -482,8 +202,6 @@ The Virtual DOM is an abstraction of the HTML DOM. It is lightweight and detache
 <li>ES6 stateless function</li>
 </ul>
 <p>All properties of object is available as props in compnent.</p>
-<h2 id="jsx">JSX</h2>
-<p>JSX is a syntax extension to JavaScript and comes with the full power of JavaScript. JSX produces React “elements”. You can embed any JavaScript expression in JSX by wrapping it in curly braces. After compilation, JSX expressions become regular JavaScript objects. This means that you can use JSX inside of if statements and for loops, assign it to variables, accept it as arguments, and return it from functions. Eventhough React does not require JSX, it is the recommended way of describing our UI in React app.</p>
 <h2 id="redux">Redux</h2>
 <p>Redux enforces keeping all state in a single centralized object graph.</p>
 <p>A callback function can be invoked when setState has finished and the component is re-rendered. Since the setState is asynchronous, which is why it takes in a second callback function. With this function, we can do what we want immediately after state has been updated.</p>
@@ -538,20 +256,10 @@ In most (or all) cases we should use controlled components.</p>
 <p>It is good to prefer PureComponent over Component whenever we never mutate our objects.</p>
 </li>
 <li>
-<p><strong>What is Redux Thunk used for?</strong></p>
-<p>Redux thunk is middleware that allows us to write action creators that return a function instead of an action. The thunk can then be used to delay the dispatch of an action if a certain condition is met. This allows us to handle the asyncronous dispatching of actions. The inner function receives the store methods dispatch and getState as parameters.</p>
-</li>
-<li>
 <p><strong>What is a higher order component?</strong></p>
 <p>A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API. They are a pattern that emerges from React’s compositional nature.</p>
 <p>A higher-order component is a function that takes a component and returns a new component.</p>
 <p>HOC’s allow you to reuse code, logic and bootstrap abstraction. HOCs are common in third-party React libraries. The most common is probably Redux’s connect function. Beyond simply sharing utility libraries and simple composition, HOCs are the best way to share behavior between React Components. If you find yourself writing a lot of code in different places that does the same thing, you may be able to refactor that code into a reusable HOC.</p>
-</li>
-<li>
-<p><strong>What is the difference between state and props?</strong></p>
-<p>The state is a data structure that starts with a default value when a Component mounts. It may be mutated across time, mostly as a result of user events.</p>
-<p>Props (short for properties) are a Component’s configuration. Props are how components talk to each other. They are received from above component and immutable as far as the Component receiving them is concerned. A Component cannot change its props, but it is responsible for putting together the props of its child Components. Props do not have to just be data — callback functions may be passed in as props.</p>
-<p>There is also the case that we can have default props so that props are set even if a parent component doesn’t pass props down.</p>
 </li>
 <li>
 <p><strong>What are the differences between a class component and functional component?</strong></p>
@@ -559,83 +267,56 @@ In most (or all) cases we should use controlled components.</p>
 <p>When our component just receives props and renders them to the page, this is a ‘stateless component’, for which a pure function can be used. These are also called dumb components or presentational components.</p>
 </li>
 </ol>
-                
               
-              
-                
-
-
-              
-            </article>
-          </div>
-        </div>
-        
-      </main>
-      
-        
-<footer class="md-footer">
-  
-    <nav class="md-footer__inner md-grid" aria-label="Footer">
-      
-        
-        <a href="../javascript/" class="md-footer__link md-footer__link--prev" aria-label="Previous: JavaScript" rel="prev">
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
-          </div>
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Previous
-              </span>
-              JavaScript
             </div>
-          </div>
-        </a>
-      
-      
-        
-        <a href="../nodeJS/" class="md-footer__link md-footer__link--next" aria-label="Next: NodeJS" rel="next">
-          <div class="md-footer__title">
-            <div class="md-ellipsis">
-              <span class="md-footer__direction">
-                Next
-              </span>
-              NodeJS
-            </div>
-          </div>
-          <div class="md-footer__button md-icon">
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
-          </div>
-        </a>
-      
-    </nav>
-  
-  <div class="md-footer-meta md-typeset">
-    <div class="md-footer-meta__inner md-grid">
-      <div class="md-footer-copyright">
-        
-        Made with
-        <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-          Material for MkDocs
-        </a>
-        
-      </div>
-      
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../javascript/" class="btn btn-neutral float-left" title="JavaScript"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../nodeJS/" class="btn btn-neutral float-right" title="NodeJS">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
   </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
 </footer>
-      
-    </div>
-    <div class="md-dialog" data-md-component="dialog">
-      <div class="md-dialog__inner md-typeset"></div>
-    </div>
-    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.709b4209.min.js", "version": null}</script>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/vinkrish/interview-reference" class="fa fa-code-fork" style="color: #fcfcfc"> vinkrish/interview-reference</a>
+        </span>
     
     
-      <script src="../assets/javascripts/bundle.febc23d1.min.js"></script>
-      
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-      
+      <span><a href="../javascript/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
-  </body>
+    
+      <span><a href="../nodeJS/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "..";</script>
+    <script src="../js/theme_extra.js"></script>
+    <script src="../js/theme.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script src="../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
 </html>
