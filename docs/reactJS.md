@@ -36,6 +36,11 @@ Props (short for properties) are read-only attributes passed from a parent compo
 
 State is a built-in React object used to store data or information about the component. Unlike props, state is mutable and managed within the component. When state changes, React re-renders the component.
 
+## What is the difference between state and props?
+
+- Props are passed from parent to child components, are immutable, and allow sharing data across components.
+- State is local to the component, mutable, and used to manage internal data that can change over time.
+
 ## What are hooks in React?
 
 Hooks are special functions that allow using state and other React features in functional components. The most commonly used hooks are:
@@ -45,14 +50,34 @@ Hooks are special functions that allow using state and other React features in f
 - useContext for accessing React context.
 - useMemo and useCallback for optimizing performance.
 
-## What is the difference between state and props?
+## Lifecycle Methods in Functional Components
 
-- Props are passed from parent to child components, are immutable, and allow sharing data across components.
-- State is local to the component, mutable, and used to manage internal data that can change over time.
+Hooks are now the preferred way of working with React lifecycle in functional components.
+
+```js
+import { useEffect } from 'react';
+
+function MyComponent() {
+  useEffect(() => {
+    // componentDidMount & componentDidUpdate logic
+    return () => {
+      // componentWillUnmount logic
+    };
+  }, []); // The second argument controls when the effect runs
+}
+```
 
 ## What is the purpose of useEffect in React?
 
  `useEffect` is a hook used to perform side effects in functional components, like fetching data, updating the DOM, or setting up subscriptions. It runs after the render cycle and can optionally clean up after itself by returning a function.
+
+## How do you handle events in React?
+
+Handling events in React is similar to handling events in plain JavaScript, but with a few key differences:
+
+- **Naming Convention**: React uses camelCase naming for event handlers instead of lowercase. For example, onclick in HTML becomes onClick in React.
+- **Passing Functions as Props**: Instead of passing a string representing the event handler, you pass the actual function as a prop to the element.
+- **Synthetic Events**: React wraps native browser events in its own synthetic event system to ensure cross-browser compatibility.
 
 ## What is the purpose of keys in React?
 
@@ -61,6 +86,8 @@ Keys help React identify which items in a list have changed, are added, or are r
 ## What are higher-order components (HOC) in React?
 
 A HOC is a pattern in which a function takes a component and returns a new component with added functionality. It's a way to reuse component logic. For example, adding authentication checks to multiple components.
+
+HOC are the best way to share behavior between React Components. If you find yourself writing a lot of code in different places that does the same thing, you may be able to refactor that code into a reusable HOC. eg: Redux’s connect function
 
 ## What is the Context API in React?
 
@@ -226,17 +253,3 @@ children is passes down from react router `{ this.props.children }`
     When comparing previous props and state to next, a shallow comparison will check that primitives have the same value (eg, 1 equals 1 or that true equals true) and that the references are the same between more complex javascript values like objects and arrays.
 
     It is good to prefer PureComponent over Component whenever we never mutate our objects.
-
-7. **What is a higher order component?**
-
-    A higher-order component (HOC) is an advanced technique in React for reusing component logic. HOCs are not part of the React API. They are a pattern that emerges from React’s compositional nature.
-
-    A higher-order component is a function that takes a component and returns a new component.
-
-    HOC’s allow you to reuse code, logic and bootstrap abstraction. HOCs are common in third-party React libraries. The most common is probably Redux’s connect function. Beyond simply sharing utility libraries and simple composition, HOCs are the best way to share behavior between React Components. If you find yourself writing a lot of code in different places that does the same thing, you may be able to refactor that code into a reusable HOC.
-
-9. **What are the differences between a class component and functional component?**
-
-    Class components allows us to use additional features such as local state and lifecycle hooks. Also, to enable our component to have direct access to our store and thus holds state.
-
-    When our component just receives props and renders them to the page, this is a ‘stateless component’, for which a pure function can be used. These are also called dumb components or presentational components.

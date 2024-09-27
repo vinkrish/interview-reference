@@ -1,7 +1,5 @@
 # NodeJS
 
-[Follow here](https://vigowebs.medium.com/frequently-asked-node-js-interview-questions-and-answers-b74fa1f20678)
-
 ## What is Node.js?
 
 Node.js is a runtime environment that allows you to run JavaScript code on the server-side, outside of a web browser. It is built on the V8 JavaScript engine, which is the same engine that powers Google Chrome, but it extends the capabilities of JavaScript by providing server-side APIs like file system access, network requests, and more.
@@ -42,6 +40,39 @@ How it works:
 - Non-blocking I/O: This is particularly useful in scenarios where you have I/O-heavy operations (like reading files, querying databases) because the event loop doesn't wait for these operations to complete before moving on to handle other tasks.
 - Scalability: Since Node.js doesn’t block the execution thread for I/O operations, it can handle a large number of concurrent connections with minimal overhead.
 - Efficiency: Event-driven programming helps utilize system resources efficiently, especially in handling real-time applications, chat applications, or APIs that involve many simultaneous users or connections.
+
+## Event Loop Phases 
+
+The event loop in Node.js is a critical concept for understanding how asynchronous code is handled. Node.js is single-threaded, and it uses an event-driven architecture, which means the event loop takes care of executing asynchronous callbacks. 
+
+The event loop has several phases that determine the order in which tasks are executed:
+
+**1. Timers Phase**
+
+- What happens: In this phase, Node.js checks for any timers (created using setTimeout() or setInterval()) that are ready to execute. These callbacks will be executed if the scheduled time has been reached.
+- Key point: Timers are scheduled, but there’s no guarantee that they will execute exactly after the specified delay, due to the other phases of the event loop.
+
+**2. I/O Callbacks Phase (Pending Callbacks)**
+
+This phase handles I/O operations that are deferred from the previous cycle. These are not directly tied to timers but are callbacks that were queued by some system-level operations, such as TCP errors.
+
+**3. Idle, Prepare Phase**
+
+This phase is mainly internal and used to prepare for the next cycle. It is rarely discussed in day-to-day operations as it primarily deals with internal mechanisms.
+
+**4. Poll Phase**
+
+- What happens: This is where the event loop spends most of its time. The poll phase retrieves new I/O events, and executes I/O-related callbacks (e.g., reading from a file or network), and continues to block if appropriate callbacks are not scheduled.
+- Key point: If there are no timers scheduled and no I/O events waiting, the event loop will remain in this phase, essentially waiting for new work.
+
+**5. Check Phase**
+
+- What happens: This phase is where the callbacks for `setImmediate()` are executed. Callbacks queued with `setImmediate()` are executed after the poll phase is completed.
+- Key point: `setImmediate()` is similar to `setTimeout(() => {}, 0)` but it ensures that it runs after I/O events in the poll phase.
+
+**6. Close Callbacks Phase**
+
+In this phase, Node.js executes close event callbacks for certain events, such as when a socket or handle is closed (e.g., on a TCP connection or a file stream).
 
 ## What is the difference between require() and import in Node.js?
 
