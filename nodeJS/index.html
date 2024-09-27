@@ -66,6 +66,8 @@
     </li>
     <li class="toctree-l2"><a class="reference internal" href="#explain-event-driven-programming-in-nodejs">Explain event-driven programming in Node.js?</a>
     </li>
+    <li class="toctree-l2"><a class="reference internal" href="#event-loop-phases">Event Loop Phases</a>
+    </li>
     <li class="toctree-l2"><a class="reference internal" href="#what-is-the-difference-between-require-and-import-in-nodejs">What is the difference between require() and import in Node.js?</a>
     </li>
     </ul>
@@ -96,7 +98,6 @@
             <div class="section" itemprop="articleBody">
               
                 <h1 id="nodejs">NodeJS</h1>
-<p><a href="https://vigowebs.medium.com/frequently-asked-node-js-interview-questions-and-answers-b74fa1f20678">Follow here</a></p>
 <h2 id="what-is-nodejs">What is Node.js?</h2>
 <p>Node.js is a runtime environment that allows you to run JavaScript code on the server-side, outside of a web browser. It is built on the V8 JavaScript engine, which is the same engine that powers Google Chrome, but it extends the capabilities of JavaScript by providing server-side APIs like file system access, network requests, and more.</p>
 <p>Key points about Node.js:</p>
@@ -130,6 +131,30 @@ In an event-driven system, callbacks (also known as event handlers or listeners)
 <li>Scalability: Since Node.js doesn’t block the execution thread for I/O operations, it can handle a large number of concurrent connections with minimal overhead.</li>
 <li>Efficiency: Event-driven programming helps utilize system resources efficiently, especially in handling real-time applications, chat applications, or APIs that involve many simultaneous users or connections.</li>
 </ul>
+<h2 id="event-loop-phases">Event Loop Phases</h2>
+<p>The event loop in Node.js is a critical concept for understanding how asynchronous code is handled. Node.js is single-threaded, and it uses an event-driven architecture, which means the event loop takes care of executing asynchronous callbacks. </p>
+<p>The event loop has several phases that determine the order in which tasks are executed:</p>
+<p><strong>1. Timers Phase</strong></p>
+<ul>
+<li>What happens: In this phase, Node.js checks for any timers (created using setTimeout() or setInterval()) that are ready to execute. These callbacks will be executed if the scheduled time has been reached.</li>
+<li>Key point: Timers are scheduled, but there’s no guarantee that they will execute exactly after the specified delay, due to the other phases of the event loop.</li>
+</ul>
+<p><strong>2. I/O Callbacks Phase (Pending Callbacks)</strong></p>
+<p>This phase handles I/O operations that are deferred from the previous cycle. These are not directly tied to timers but are callbacks that were queued by some system-level operations, such as TCP errors.</p>
+<p><strong>3. Idle, Prepare Phase</strong></p>
+<p>This phase is mainly internal and used to prepare for the next cycle. It is rarely discussed in day-to-day operations as it primarily deals with internal mechanisms.</p>
+<p><strong>4. Poll Phase</strong></p>
+<ul>
+<li>What happens: This is where the event loop spends most of its time. The poll phase retrieves new I/O events, and executes I/O-related callbacks (e.g., reading from a file or network), and continues to block if appropriate callbacks are not scheduled.</li>
+<li>Key point: If there are no timers scheduled and no I/O events waiting, the event loop will remain in this phase, essentially waiting for new work.</li>
+</ul>
+<p><strong>5. Check Phase</strong></p>
+<ul>
+<li>What happens: This phase is where the callbacks for <code>setImmediate()</code> are executed. Callbacks queued with <code>setImmediate()</code> are executed after the poll phase is completed.</li>
+<li>Key point: <code>setImmediate()</code> is similar to <code>setTimeout(() =&gt; {}, 0)</code> but it ensures that it runs after I/O events in the poll phase.</li>
+</ul>
+<p><strong>6. Close Callbacks Phase</strong></p>
+<p>In this phase, Node.js executes close event callbacks for certain events, such as when a socket or handle is closed (e.g., on a TCP connection or a file stream).</p>
 <h2 id="what-is-the-difference-between-require-and-import-in-nodejs">What is the difference between require() and import in Node.js?</h2>
 <p><strong>1. Module Systems</strong>:</p>
 <ul>
