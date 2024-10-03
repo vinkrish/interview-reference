@@ -178,40 +178,27 @@ Four ways to create component:
 - ES5 stateless function
 - ES6 stateless function
 
-All properties of object is available as props in compnent.
+All properties of object is available as props in component, children is passes down from react router `{ this.props.children }`
 
 ## Redux
 
-Redux enforces keeping all state in a single centralized object graph.
+Redux enforces keeping all state in a single centralized object graph. Redux is a predictable state container for JavaScript applications, commonly used with React to manage application state in a scalable and maintainable way. The primary concepts of Redux are:
 
-A callback function can be invoked when setState has finished and the component is re-rendered. Since the setState is asynchronous, which is why it takes in a second callback function. With this function, we can do what we want immediately after state has been updated.
+- Store: A single source of truth that holds the state of the entire application.
+- Actions: Plain JavaScript objects that describe a change in the state. Every action has a type property, and optionally, a payload with data.
+- Reducers: Pure functions that take the current state and an action as arguments and return a new state. They specify how the application's state changes in response to actions.
+- Dispatch: A function that triggers actions, sending them to the reducer to modify the state.
+- Selectors: Functions that extract pieces of state from the store for use within components.
 
-- React: Someone clicked this 'Save' button.
-- Action: Actions are payloads of information that send data from our application to our store. They are the only source of information for the store. We send them to the store using store.dispatch(). Primarly, they are just an object describes what happened in our app.
-- Reducer: Reducers specify how the application’s state changes in response to actions sent to the store. Remember that actions only describe what happened, but don’t describe how the application’s state changes. So this place determines how state will change to an action.
-- Store: The Store is the object that brings Action and Reducer together. The store has the following responsibilities: Holds application state; Allows access to state via getState(); Allows state to be updated via dispatch(action); Registers listeners via subscribe(listener); Handles unregistering of listeners via the function returned by subscribe(listener).
-- React-Redux: Woah, thanks for the new data Mr.Store. I'll now intelligently determine if I should tell React about this change so that it only has to bother with updating the UI when necessary.
-- React: Ooh! shiny new data has been passed down via props from the store! I'll update the UI to reflect this.
+**Redux Workflow in React**
 
-Reducers are functions that take the current state in an action and then return a new state.
+The basic flow works as follows:
 
-setState() actions are asynchronous and are batched for performance gains. This is explained in documentation as below.
+- Components dispatch actions: When a user interacts with a React component (e.g., button click), an action is dispatched.
+- Reducers handle actions: The action travels to the store, which then passes it to the reducer(s). Each reducer processes the action and updates the relevant part of the state.
+- Store updates: The new state is computed, and React components subscribed to the store re-render to reflect these changes.
 
-setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling this method can potentially return the existing value. There is no guarantee of synchronous operation of calls to setState and calls may be batched for performance gains.
-
-This is because setState alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive. Thus the setState calls are asynchronous as well as batched for better UI experience and performance.
-
-Containers are components containing the necessary logic for marshalling data and actions (via props)
-
-Redux store is immutable.
-
-![react_redux_store](https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/react_redux_store.png)
-
-The provider component attaches your application to the redux store so you use the provider component to wrap your application's top-level component.
-
-The connect wraps our component so it's connected to the redux store.
-
-children is passes down from react router `{ this.props.children }`
+Redux Toolkit is now the recommended way to write Redux logic and is designed to address the pain points of using Redux. It simplifies the store setup and enforces best practices by providing built-in utilities.
 
 ## Questions
 
