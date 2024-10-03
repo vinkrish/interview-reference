@@ -222,28 +222,24 @@ function MyComponent() {
 <li>ES5 stateless function</li>
 <li>ES6 stateless function</li>
 </ul>
-<p>All properties of object is available as props in compnent.</p>
+<p>All properties of object is available as props in component, children is passes down from react router <code>{ this.props.children }</code></p>
 <h2 id="redux">Redux</h2>
-<p>Redux enforces keeping all state in a single centralized object graph.</p>
-<p>A callback function can be invoked when setState has finished and the component is re-rendered. Since the setState is asynchronous, which is why it takes in a second callback function. With this function, we can do what we want immediately after state has been updated.</p>
+<p>Redux enforces keeping all state in a single centralized object graph. Redux is a predictable state container for JavaScript applications, commonly used with React to manage application state in a scalable and maintainable way. The primary concepts of Redux are:</p>
 <ul>
-<li>React: Someone clicked this 'Save' button.</li>
-<li>Action: Actions are payloads of information that send data from our application to our store. They are the only source of information for the store. We send them to the store using store.dispatch(). Primarly, they are just an object describes what happened in our app.</li>
-<li>Reducer: Reducers specify how the application’s state changes in response to actions sent to the store. Remember that actions only describe what happened, but don’t describe how the application’s state changes. So this place determines how state will change to an action.</li>
-<li>Store: The Store is the object that brings Action and Reducer together. The store has the following responsibilities: Holds application state; Allows access to state via getState(); Allows state to be updated via dispatch(action); Registers listeners via subscribe(listener); Handles unregistering of listeners via the function returned by subscribe(listener).</li>
-<li>React-Redux: Woah, thanks for the new data Mr.Store. I'll now intelligently determine if I should tell React about this change so that it only has to bother with updating the UI when necessary.</li>
-<li>React: Ooh! shiny new data has been passed down via props from the store! I'll update the UI to reflect this.</li>
+<li>Store: A single source of truth that holds the state of the entire application.</li>
+<li>Actions: Plain JavaScript objects that describe a change in the state. Every action has a type property, and optionally, a payload with data.</li>
+<li>Reducers: Pure functions that take the current state and an action as arguments and return a new state. They specify how the application's state changes in response to actions.</li>
+<li>Dispatch: A function that triggers actions, sending them to the reducer to modify the state.</li>
+<li>Selectors: Functions that extract pieces of state from the store for use within components.</li>
 </ul>
-<p>Reducers are functions that take the current state in an action and then return a new state.</p>
-<p>setState() actions are asynchronous and are batched for performance gains. This is explained in documentation as below.</p>
-<p>setState() does not immediately mutate this.state but creates a pending state transition. Accessing this.state after calling this method can potentially return the existing value. There is no guarantee of synchronous operation of calls to setState and calls may be batched for performance gains.</p>
-<p>This is because setState alters the state and causes rerendering. This can be an expensive operation and making it synchronous might leave the browser unresponsive. Thus the setState calls are asynchronous as well as batched for better UI experience and performance.</p>
-<p>Containers are components containing the necessary logic for marshalling data and actions (via props)</p>
-<p>Redux store is immutable.</p>
-<p><img alt="react_redux_store" src="https://vinkrish-notes.s3-us-west-2.amazonaws.com/img/react_redux_store.png" /></p>
-<p>The provider component attaches your application to the redux store so you use the provider component to wrap your application's top-level component.</p>
-<p>The connect wraps our component so it's connected to the redux store.</p>
-<p>children is passes down from react router <code>{ this.props.children }</code></p>
+<p><strong>Redux Workflow in React</strong></p>
+<p>The basic flow works as follows:</p>
+<ul>
+<li>Components dispatch actions: When a user interacts with a React component (e.g., button click), an action is dispatched.</li>
+<li>Reducers handle actions: The action travels to the store, which then passes it to the reducer(s). Each reducer processes the action and updates the relevant part of the state.</li>
+<li>Store updates: The new state is computed, and React components subscribed to the store re-render to reflect these changes.</li>
+</ul>
+<p>Redux Toolkit is now the recommended way to write Redux logic and is designed to address the pain points of using Redux. It simplifies the store setup and enforces best practices by providing built-in utilities.</p>
 <h2 id="questions">Questions</h2>
 <ol>
 <li>
